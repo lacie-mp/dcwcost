@@ -3,51 +3,76 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CallToAction from "../components/CallToAction.astro";
 
 const stats = [
-  { value: "$4.2B+", label: "Construction value managed" },
-  { value: "320+", label: "Projects delivered" },
-  { value: "8.5%", label: "Average cost savings identified" },
-  { value: "25 yrs", label: "In cost consulting" },
+  { value: "2014", label: "Founded in Seattle" },
+  { value: "400+", label: "Projects supported each year" },
+  { value: "2", label: "Offices — Seattle & Portland" },
+  { value: "WBE", label: "Women-owned, employee-owned" },
 ];
 
-const services = [
+const pillars = [
   {
-    title: "Cost Estimating",
-    text: "Detailed, benchmarked estimates from concept through construction documents so you can commit capital with confidence.",
+    title: "Cost Management",
+    text: "Independent, market-based cost consultancy that protects the design intent and the Owner's budget from first concept through construction.",
+    points: [
+      "Third-party cost estimating",
+      "Design-based cost management",
+      "Business-case cost planning",
+      "Cost review, reconciliation & reporting",
+    ],
   },
   {
-    title: "Cost Planning & Control",
-    text: "Live budgets, cash-flow forecasts, and change-order review that keep every project tracking to plan.",
+    title: "Construction Management",
+    text: "Owner-centered management that keeps design and construction teams aligned, and holds the project to scope, schedule, and budget through delivery.",
+    points: [
+      "Program & project management",
+      "Construction management",
+      "Owner's representation",
+      "Change-order review & substantiation",
+    ],
+  },
+];
+
+const featured = [
+  {
+    name: "Colman Dock",
+    sector: "Transportation",
+    text: "Cost management for Washington State's primary ferry terminal, including the Entry Building and Elevated Pedestrian Connector.",
+    href: "/projects",
   },
   {
-    title: "Value Engineering",
-    text: "Structured reviews that protect scope and quality while stripping avoidable cost out of the design.",
+    name: "University Link Light Rail Station",
+    sector: "Transportation",
+    text: "Milestone estimating and change-order substantiation for a new underground Sound Transit station beside Husky Stadium.",
+    href: "/projects",
   },
   {
-    title: "Risk & Contingency",
-    text: "Quantified risk registers and contingency modeling that turn unknowns into a managed line item.",
+    name: "Mount Vernon Library Commons",
+    sector: "Civic",
+    text: "Cost management alongside HKP Architects on a one-of-a-kind, sustainable community library and commons.",
+    href: "/projects",
   },
 ];
 
 const steps = [
   {
     n: "01",
-    title: "Understand",
-    text: "We review the brief, drawings, and objectives to establish a clear cost baseline.",
+    title: "Represent the Owner",
+    text: "We work only for you — an independent check that keeps costs accurate, responsible, and accountable to the public.",
   },
   {
     n: "02",
-    title: "Analyze",
-    text: "We benchmark, test scenarios, and expose the risks and opportunities in the numbers.",
+    title: "Protect the design intent",
+    text: "We stand by the design so pricing reflects what was actually drawn, in enough detail to understand cost and constructability.",
   },
   {
     n: "03",
-    title: "Advise",
-    text: "You get clear, decision-ready reporting — not spreadsheets you have to decode.",
+    title: "Manage through delivery",
+    text: "We plan, budget, and schedule, and liaise between design and construction teams so nothing falls through the cracks.",
   },
   {
     n: "04",
-    title: "Control",
-    text: "We track costs through delivery, so surprises become decisions, not overruns.",
+    title: "Report with clarity",
+    text: "Reconciled estimates and clear reporting give owners, agencies, and boards decision-ready numbers at every milestone.",
   },
 ];
 ---
@@ -57,12 +82,13 @@ const steps = [
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow">Construction Cost Management</span>
-        <h1>Build with certainty over every dollar.</h1>
+        <span class="eyebrow">Cost &amp; Construction Management · Seattle · Portland</span>
+        <h1>Independent cost expertise, on the Owner's side.</h1>
         <p class="lead">
-          DCW Cost is an independent cost-management consultancy for owners,
-          developers, and contractors. We bring rigor to your budget so capital
-          projects finish on scope, on schedule, and on cost.
+          DCW is an independent, women-owned consultancy providing
+          owner-centered construction management and market-based cost
+          consultancy — dedicated to preserving the design intent and the
+          Owner's requirements on every project.
         </p>
         <div class="hero-actions">
           <a href="/contact" class="btn btn--primary">Request a Consultation</a>
@@ -71,12 +97,12 @@ const steps = [
       </div>
       <div class="hero-panel" aria-hidden="true">
         <div class="hero-card">
-          <span class="hero-card-label">Project budget health</span>
-          <div class="bar"><span style="width: 92%"></span></div>
+          <span class="hero-card-label">Independent cost check</span>
+          <div class="bar"><span style="width: 88%"></span></div>
           <div class="hero-card-rows">
-            <div><span>Committed</span><strong>$18.4M</strong></div>
-            <div><span>Forecast</span><strong>$18.9M</strong></div>
-            <div class="ok"><span>Contingency</span><strong>+$0.6M</strong></div>
+            <div><span>Owner budget</span><strong>On target</strong></div>
+            <div><span>Estimate reconciliation</span><strong>Complete</strong></div>
+            <div class="ok"><span>Change orders</span><strong>Substantiated</strong></div>
           </div>
         </div>
       </div>
@@ -99,39 +125,45 @@ const steps = [
     </div>
   </section>
 
-  <!-- Services overview -->
+  <!-- Two service pillars -->
   <section class="section">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">What we do</span>
-        <h2>Cost expertise across the full project lifecycle</h2>
+        <h2>Two disciplines, one accountable partner</h2>
         <p class="lead">
-          From feasibility to final account, we give you an independent, expert
-          view of the numbers at every stage.
+          Owners engage DCW for independent cost consultancy, hands-on
+          construction management, or both — a single team that carries the
+          numbers from planning through closeout.
         </p>
       </div>
       <div class="grid grid--2">
         {
-          services.map((s) => (
-            <article class="card card--hover">
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
+          pillars.map((p) => (
+            <article class="card card--hover pillar">
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+              <ul class="ticks">
+                {p.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+              <p class="pillar-link">
+                <a href="/services">Explore {p.title.toLowerCase()} →</a>
+              </p>
             </article>
           ))
         }
       </div>
-      <p class="services-more">
-        <a href="/services" class="btn btn--outline">See all services</a>
-      </p>
     </div>
   </section>
 
-  <!-- Process -->
+  <!-- Approach -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-head section-head--center">
         <span class="eyebrow">How we work</span>
-        <h2>A disciplined, four-step approach</h2>
+        <h2>An owner-centered approach</h2>
       </div>
       <div class="grid grid--4">
         {
@@ -144,6 +176,35 @@ const steps = [
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Selected work</span>
+        <h2>Trusted on the region's landmark projects</h2>
+        <p class="lead">
+          From ferry terminals and light rail to civic libraries, we support
+          the public agencies, municipalities, non-profits, and architects
+          shaping the Pacific Northwest.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        {
+          featured.map((p) => (
+            <a class="card card--hover feature-card" href={p.href}>
+              <span class="tag">{p.sector}</span>
+              <h3>{p.name}</h3>
+              <p>{p.text}</p>
+            </a>
+          ))
+        }
+      </div>
+      <p class="services-more">
+        <a href="/projects" class="btn btn--outline">See more projects</a>
+      </p>
     </div>
   </section>
 
@@ -176,7 +237,7 @@ const steps = [
   }
 
   .hero-copy .lead {
-    max-width: 52ch;
+    max-width: 54ch;
     color: var(--body);
   }
 
@@ -273,12 +334,46 @@ const steps = [
     font-size: 0.95rem;
   }
 
-  .services-more {
-    margin-top: 2rem;
-    margin-bottom: 0;
+  /* Pillars */
+  .pillar {
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Process steps */
+  .ticks {
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1.1rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .ticks li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: 0.95rem;
+    color: var(--body);
+  }
+
+  .ticks li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 0.7rem;
+    height: 0.4rem;
+    border-left: 2px solid var(--amber-600);
+    border-bottom: 2px solid var(--amber-600);
+    transform: rotate(-45deg);
+  }
+
+  .pillar-link {
+    margin: 1.2rem 0 0;
+    font-weight: 600;
+  }
+
+  /* Approach steps */
   .step-n {
     display: inline-block;
     font-size: 1rem;
@@ -296,5 +391,35 @@ const steps = [
     color: var(--muted);
     font-size: 0.98rem;
     margin: 0;
+  }
+
+  /* Featured projects */
+  .feature-card {
+    display: block;
+    color: inherit;
+  }
+
+  .feature-card:hover {
+    color: inherit;
+  }
+
+  .feature-card h3 {
+    margin: 0.8rem 0 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--amber-600);
+    background: rgba(245, 166, 35, 0.12);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .services-more {
+    margin-top: 2rem;
+    margin-bottom: 0;
   }
 </style>

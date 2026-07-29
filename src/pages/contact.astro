@@ -2,42 +2,49 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const services = [
-  "Cost Estimating",
-  "Cost Planning & Control",
-  "Value Engineering",
-  "Risk & Contingency",
-  "Procurement Advisory",
-  "Claims & Final Account",
+  "Cost Management",
+  "Third-Party Cost Estimating",
+  "Construction Management",
+  "Owner's Representation",
+  "Program / Project Management",
+  "Feasibility & Cost Planning",
   "Not sure yet",
+];
+
+const offices = [
+  {
+    city: "Seattle (Headquarters)",
+    lines: ["255 S King St, Suite 800", "Seattle, WA 98104"],
+  },
+  {
+    city: "Portland",
+    lines: ["220 NW 8th Ave", "Portland, OR 97209"],
+  },
 ];
 
 const details = [
   {
     label: "Email",
-    value: "hello@dcwcost.com",
-    href: "mailto:hello@dcwcost.com",
+    value: "info@dcwcost.com",
+    href: "mailto:info@dcwcost.com",
   },
-  { label: "Phone", value: "(214) 555-0142", href: "tel:+12145550142" },
-  {
-    label: "Office",
-    value: "1200 Commerce Street, Suite 450, Dallas, TX 75202",
-  },
-  { label: "Hours", value: "Mon–Fri, 8:00 AM – 6:00 PM CT" },
+  { label: "Phone", value: "(206) 259-2990", href: "tel:+12062592990" },
+  { label: "Hours", value: "Mon–Fri, 8:00 AM – 5:00 PM PT" },
 ];
 ---
 
 <BaseLayout
   title="Contact"
-  description="Contact DCW Cost to discuss estimating, cost planning, value engineering, and risk management for your construction project."
+  description="Contact DCW Cost & Construction Management in Seattle and Portland to discuss independent cost estimating, cost management, and construction management for your project."
 >
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Contact us</span>
       <h1>Let's talk about your project.</h1>
       <p class="lead">
-        Tell us where your project stands and what you need. A principal will
-        respond within one business day — no sales pitch, just straight cost
-        advice.
+        Tell us where your project stands and how we can help. Reach our Seattle
+        or Portland team and we'll follow up promptly — with straight,
+        independent cost advice.
       </p>
     </div>
   </section>
@@ -60,7 +67,7 @@ const details = [
                 autocomplete="name" />
             </div>
             <div class="field">
-              <label for="company">Company</label>
+              <label for="company">Organization</label>
               <input id="company" name="company" type="text"
                 autocomplete="organization" />
             </div>
@@ -91,7 +98,7 @@ const details = [
               id="message"
               name="message"
               rows="5"
-              placeholder="Sector, budget range, current stage, and what you're trying to achieve."
+              placeholder="Project type, owner/agency, current stage, and what you're trying to achieve."
               required></textarea>
           </div>
 
@@ -106,7 +113,7 @@ const details = [
       <!-- Details -->
       <aside class="contact-details">
         <h2>Reach us directly</h2>
-        <ul>
+        <ul class="details-list">
           {
             details.map((d) => (
               <li>
@@ -120,11 +127,28 @@ const details = [
             ))
           }
         </ul>
+
+        <h3 class="offices-title">Our offices</h3>
+        <ul class="offices">
+          {
+            offices.map((o) => (
+              <li>
+                <strong>{o.city}</strong>
+                <address>
+                  {o.lines.map((line) => (
+                    <span>{line}</span>
+                  ))}
+                </address>
+              </li>
+            ))
+          }
+        </ul>
+
         <div class="response-card">
-          <strong>Fast, senior response</strong>
+          <strong>Independent &amp; owner-centered</strong>
           <p>
-            Your enquiry goes straight to a principal consultant — not a call
-            center. Expect a reply within one business day.
+            As a women-owned, employee-owned firm, we work only for the Owner —
+            keeping costs accurate, responsible, and accountable.
           </p>
         </div>
       </aside>
@@ -140,7 +164,7 @@ const details = [
   }
 
   .page-hero .lead {
-    max-width: 60ch;
+    max-width: 62ch;
   }
 
   .contact-grid {
@@ -229,7 +253,7 @@ const details = [
     font-size: 1.5rem;
   }
 
-  .contact-details ul {
+  .details-list {
     list-style: none;
     display: grid;
     gap: 1.25rem;
@@ -248,6 +272,34 @@ const details = [
 
   .detail-value {
     color: var(--ink);
+  }
+
+  .offices-title {
+    margin-bottom: 1rem;
+  }
+
+  .offices {
+    list-style: none;
+    display: grid;
+    gap: 1.25rem;
+    margin: 0 0 2rem;
+  }
+
+  .offices strong {
+    display: block;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .offices address {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .offices address span {
+    display: block;
   }
 
   .response-card {

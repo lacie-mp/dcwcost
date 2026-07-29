@@ -4,58 +4,52 @@ import CallToAction from "../components/CallToAction.astro";
 
 const projects = [
   {
-    name: "Riverside Medical Center",
-    sector: "Healthcare",
-    value: "$420M",
-    location: "Austin, TX",
+    name: "Colman Dock",
+    sector: "Transportation",
+    client: "Washington State Ferries",
+    role: "Cost Management",
     summary:
-      "Full cost management for a 480-bed acute-care hospital, from feasibility estimating through final account.",
-    result: "Delivered 3% under GMP with a fully reconciled final account.",
+      "Cost management for the state's primary ferry terminal — including the Entry Building and Elevated Pedestrian Connector. DCW developed comparative estimates to reconcile with the contractor and reviewed change orders spanning dry systems, electrical, mechanical and structural work, in-water infrastructure, a temporary pedestrian bridge, and roadway modifications.",
   },
   {
-    name: "Gateway Logistics Park",
-    sector: "Industrial",
-    value: "$185M",
-    location: "Fort Worth, TX",
+    name: "University Link Light Rail Station",
+    sector: "Transportation",
+    client: "Sound Transit",
+    role: "Cost Estimating & Review",
     summary:
-      "Cost planning and value engineering across a four-building distribution campus on a fast-track schedule.",
-    result: "$14M of design cost removed without reducing usable capacity.",
+      "A new underground station adjacent to Husky Stadium with a track crossover area — below-grade station, platforms, vertical connections to grade, finishes and building systems. DCW provided milestone estimating, schedule, logistics and temporary-construction review, plus change-order review and substantiation.",
   },
   {
-    name: "Northline Transit Extension",
-    sector: "Infrastructure",
-    value: "$650M",
-    location: "Dallas, TX",
+    name: "Mount Vernon Library Commons",
+    sector: "Civic",
+    client: "City of Mount Vernon · HKP Architects",
+    role: "Cost Management",
     summary:
-      "Independent estimate validation and risk modeling for a light-rail extension funded by public bonds.",
-    result: "Risk-adjusted budget accepted by the board on first submission.",
+      "A one-of-a-kind, sustainable community library and commons. DCW served as cost management for the project team, collaborating with HKP Architects from design through the start of construction.",
   },
   {
-    name: "Halcyon Mixed-Use Tower",
-    sector: "Commercial",
-    value: "$310M",
-    location: "Houston, TX",
+    name: "Operations Admin Center & Vehicle Barn",
+    sector: "Public Facilities",
+    client: "City of Bellingham",
+    role: "Cost Management",
     summary:
-      "Cost control and change-order management for a 42-story residential and retail development.",
-    result: "Change-order exposure held below 2% of contract value.",
+      "Cost management for a municipal operations administration center and vehicle barn — a public-works facility supporting the city's fleet and operations teams.",
   },
   {
-    name: "Meridian University Science Hall",
-    sector: "Education",
-    value: "$96M",
-    location: "San Antonio, TX",
+    name: "Charles D. Cameron Public Services Building",
+    sector: "Renovation",
+    client: "Public agency",
+    role: "Cost Management",
     summary:
-      "Concept-to-construction estimating and lifecycle costing for a LEED Gold research facility.",
-    result: "Baseline budget held through three design iterations.",
+      "Cost management for the renovation of an occupied public services building, balancing budget certainty with the constraints of upgrading an existing civic facility.",
   },
   {
-    name: "Cascade Water Treatment Plant",
-    sector: "Infrastructure",
-    value: "$240M",
-    location: "El Paso, TX",
+    name: "Hemisfair",
+    sector: "Civic",
+    client: "Public / civic redevelopment",
+    role: "Cost Consultancy",
     summary:
-      "Quantitative risk analysis and contingency modeling for a municipal water treatment upgrade.",
-    result: "Contingency draw closed the program 6% below authorized budget.",
+      "Cost consultancy supporting a landmark civic park and public-realm redevelopment — part of DCW's portfolio of community-focused public projects.",
   },
 ];
 
@@ -64,15 +58,16 @@ const sectors = ["All", ...new Set(projects.map((p) => p.sector))];
 
 <BaseLayout
   title="Projects"
-  description="Selected construction cost-management engagements by DCW Cost across healthcare, infrastructure, commercial, industrial, and education sectors."
+  description="Selected DCW cost and construction management engagements — Colman Dock, University Link Light Rail Station, Mount Vernon Library Commons, and more across transportation, civic, and public facilities."
 >
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Selected work</span>
-      <h1>Projects we've helped keep on budget.</h1>
+      <h1>Projects that serve the public good.</h1>
       <p class="lead">
-        A snapshot of engagements across sectors — each one measured by the same
-        standard: certainty over cost from day one to final account.
+        DCW supports more than 400 projects a year for public agencies,
+        municipalities, non-profits, and the architects who design them. A few
+        of the landmark efforts we've helped keep accountable are below.
       </p>
       <ul class="chips" aria-label="Project sectors">
         {sectors.map((s) => <li>{s}</li>)}
@@ -88,14 +83,11 @@ const sectors = ["All", ...new Set(projects.map((p) => p.sector))];
             <article class="card card--hover project-card">
               <div class="project-top">
                 <span class="tag">{p.sector}</span>
-                <span class="project-value">{p.value}</span>
+                <span class="project-role">{p.role}</span>
               </div>
               <h3>{p.name}</h3>
-              <p class="project-loc">{p.location}</p>
+              <p class="project-client">{p.client}</p>
               <p>{p.summary}</p>
-              <p class="project-result">
-                <strong>Outcome:</strong> {p.result}
-              </p>
             </article>
           ))
         }
@@ -105,7 +97,7 @@ const sectors = ["All", ...new Set(projects.map((p) => p.sector))];
 
   <CallToAction
     heading="Your project could be next."
-    text="From a single independent estimate to full lifecycle cost management, we scale to fit the engagement."
+    text="From a single independent estimate to full construction management, we scale to fit the engagement and the Owner's goals."
   />
 </BaseLayout>
 
@@ -117,7 +109,7 @@ const sectors = ["All", ...new Set(projects.map((p) => p.sector))];
   }
 
   .page-hero .lead {
-    max-width: 60ch;
+    max-width: 64ch;
   }
 
   .chips {
@@ -147,6 +139,7 @@ const sectors = ["All", ...new Set(projects.map((p) => p.sector))];
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0.5rem;
     margin-bottom: 0.9rem;
   }
 
@@ -161,30 +154,20 @@ const sectors = ["All", ...new Set(projects.map((p) => p.sector))];
     padding: 0.25rem 0.6rem;
   }
 
-  .project-value {
-    font-weight: 800;
-    color: var(--navy-800);
+  .project-role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
   }
 
   .project-card h3 {
     margin-bottom: 0.15rem;
   }
 
-  .project-loc {
-    color: var(--muted);
+  .project-client {
+    color: var(--navy-700);
     font-size: 0.9rem;
+    font-weight: 600;
     margin-bottom: 0.9rem;
-  }
-
-  .project-result {
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid var(--line);
-    font-size: 0.92rem;
-    color: var(--body);
-  }
-
-  .project-result strong {
-    color: var(--navy-800);
   }
 </style>

@@ -1,17 +1,18 @@
-# DCW Cost
+# DCW Cost & Construction Management
 
-Marketing website for **DCW Cost**, an independent construction
-cost-management consultancy. Built with [Astro](https://astro.build).
+Marketing website for **DCW Cost & Construction Management**, an independent,
+women-owned and employee-owned cost and construction management consultancy
+based in Seattle and Portland. Built with [Astro](https://astro.build).
 
 ## Pages
 
-| Route        | Description                                             |
-| ------------ | ------------------------------------------------------- |
-| `/`          | Home — hero, key stats, services overview, process      |
-| `/about`     | About — company story, values, and leadership team      |
-| `/projects`  | Projects — selected engagements across sectors          |
-| `/services`  | Services — six service areas and engagement models      |
-| `/contact`   | Contact — enquiry form and direct contact details       |
+| Route        | Description                                                       |
+| ------------ | ----------------------------------------------------------------- |
+| `/`          | Home — positioning, stats, two service pillars, featured projects |
+| `/about`     | About — the DCW story, EOT transition, values, and leadership     |
+| `/services`  | Services — Cost Management and Construction Management breakdown   |
+| `/projects`  | Projects — Colman Dock, University Link, Mount Vernon, and more    |
+| `/contact`   | Contact — enquiry form plus Seattle & Portland office details     |
 
 All pages share a common `Header` (sticky nav) and `Footer` via
 `src/layouts/BaseLayout.astro`.

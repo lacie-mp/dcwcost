@@ -4,57 +4,68 @@ import CallToAction from "../components/CallToAction.astro";
 
 const values = [
   {
-    title: "Independence",
-    text: "We work only for you. Our advice is never tied to a contractor, product, or commission — just your project's best interest.",
+    title: "Owner-centered",
+    text: "We work for the Owner and, on public work, the taxpayer — an independent check that keeps costs accurate, responsible, and transparent.",
   },
   {
-    title: "Rigor",
-    text: "Every number is benchmarked, sourced, and defensible. We show our working so you can trust the conclusion.",
+    title: "Independent & market-based",
+    text: "Our cost consultancy is grounded in real market data, not tied to a contractor or product. The advice answers only to your project.",
   },
   {
-    title: "Clarity",
-    text: "We translate complex cost data into plain, decision-ready reporting for boards, lenders, and project teams.",
+    title: "Design intent first",
+    text: "We stand by the design so pricing reflects what was actually intended, in enough detail to understand cost and constructability.",
   },
   {
-    title: "Partnership",
-    text: "We embed with your team from first concept to final account, staying accountable through delivery.",
+    title: "Shared success",
+    text: "As a women-owned firm transitioning to employee ownership, our team has a genuine stake in getting every project right.",
   },
 ];
 
 const team = [
   {
-    name: "Dana C. Whitfield",
-    role: "Founder & Principal",
-    bio: "25 years leading cost management on commercial, healthcare, and infrastructure programs across North America.",
-    initials: "DW",
+    name: "Trish Drew",
+    role: "Founder & EOT Board Chair",
+    bio: "Spent a career in and around construction before founding DCW in 2014, and led the firm's two-year move to an employee ownership trust.",
+    initials: "TD",
   },
   {
-    name: "Marcus Reyes",
-    role: "Director, Cost Planning",
-    bio: "Chartered quantity surveyor specializing in early-stage estimating and value engineering for complex builds.",
-    initials: "MR",
+    name: "Tim Ausink",
+    role: "Managing Director",
+    bio: "Oversees day-to-day operations and strategic execution across the firm's cost and construction management practices.",
+    initials: "TA",
   },
   {
-    name: "Priya Anand",
-    role: "Director, Risk & Analytics",
-    bio: "Leads quantitative risk modeling and data-driven benchmarking across the firm's project portfolio.",
-    initials: "PA",
+    name: "DCW Cost & Project Teams",
+    role: "Estimators & Managers",
+    bio: "A Seattle- and Portland-based team of cost estimators and project managers supporting more than 400 projects a year.",
+    initials: "DCW",
   },
+];
+
+const clients = [
+  "Public agencies",
+  "Municipalities",
+  "Architects",
+  "Non-profits",
+  "Commercial developers",
+  "Institutional owners",
 ];
 ---
 
 <BaseLayout
   title="About"
-  description="DCW Cost is an independent construction cost-management consultancy built on rigor, clarity, and client-side advocacy."
+  description="DCW Cost & Construction Management is an independent, women-owned and employee-owned cost and construction management consultancy founded in Seattle in 2014."
 >
   <!-- Page header -->
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">About DCW Cost</span>
-      <h1>Cost consultants who work only for the owner.</h1>
+      <span class="eyebrow">About DCW</span>
+      <h1>An independent partner, built to represent the Owner.</h1>
       <p class="lead">
-        We founded DCW Cost on a simple idea: capital projects deserve
-        independent, expert cost advice that answers to no one but the client.
+        DCW Cost &amp; Construction Management is an independent, women-owned
+        third-party consultancy delivering owner-centered construction
+        management and market-based cost consultancy across the Pacific
+        Northwest.
       </p>
     </div>
   </section>
@@ -64,35 +75,39 @@ const team = [
     <div class="container about-grid">
       <div>
         <span class="eyebrow">Our story</span>
-        <h2>A quarter-century of protecting project budgets</h2>
+        <h2>From one estimator's conviction to a regional firm</h2>
         <p>
-          DCW Cost began in 2001 as a two-person estimating practice with a
-          conviction that owners were too often the last to know when a project
-          was heading over budget. We set out to change that — putting rigorous,
-          independent cost intelligence in the client's hands early enough to
-          act on it.
+          DCW's founder, Trish Drew, spent her career in and around the
+          construction industry before turning to cost consulting. When the
+          firm she worked for was acquired and shifted toward only the largest
+          projects, she saw owners of every size being underserved — and in
+          2014 she started DCW to change that.
         </p>
         <p>
-          Today we advise owners, developers, public agencies, and contractors
-          across commercial, healthcare, education, industrial, and
-          infrastructure sectors. Our teams combine chartered quantity
-          surveying discipline with modern data analytics to give clients a
-          clear, continuous view of cost from feasibility through final account.
+          A decade on, DCW supports more than 400 projects a year from offices
+          in Seattle and Portland. As independent cost consultants, the team
+          represents the Owner and the taxpayer, providing the checks and
+          balances that keep budgets accurate and responsible — and standing by
+          the design so the Owner gets what was intended.
         </p>
         <p>
-          We stay deliberately independent and deliberately senior. When you
-          engage DCW Cost, you work directly with the people who own the
-          numbers.
+          In 2025 DCW transitioned to an Employee Ownership Trust, one of the
+          first in Washington State. The move secured the firm's continuity and
+          its status as a women-owned business, with women making up more than
+          half of DCW's management and operations. Founder Trish Drew now
+          anchors the EOT board while Managing Director Tim Ausink leads
+          day-to-day operations.
         </p>
       </div>
       <aside class="about-facts">
         <h3>At a glance</h3>
         <ul>
-          <li><span>Founded</span><strong>2001</strong></li>
-          <li><span>Headquarters</span><strong>Dallas, TX</strong></li>
-          <li><span>Projects delivered</span><strong>320+</strong></li>
-          <li><span>Value managed</span><strong>$4.2B+</strong></li>
-          <li><span>Sectors</span><strong>7 core markets</strong></li>
+          <li><span>Founded</span><strong>2014</strong></li>
+          <li><span>Headquarters</span><strong>Seattle, WA</strong></li>
+          <li><span>Second office</span><strong>Portland, OR</strong></li>
+          <li><span>Projects / year</span><strong>400+</strong></li>
+          <li><span>Ownership</span><strong>Women-owned · EOT</strong></li>
+          <li><span>Certifications</span><strong>WBE · WOSB</strong></li>
         </ul>
       </aside>
     </div>
@@ -118,8 +133,21 @@ const team = [
     </div>
   </section>
 
-  <!-- Team -->
+  <!-- Who we serve -->
   <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Who we serve</span>
+        <h2>A diverse clientele across the public and private sectors</h2>
+      </div>
+      <ul class="client-grid">
+        {clients.map((c) => <li>{c}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section section--alt">
     <div class="container">
       <div class="section-head section-head--center">
         <span class="eyebrow">Leadership</span>
@@ -144,7 +172,7 @@ const team = [
 
   <CallToAction
     heading="Let's talk about your project."
-    text="Book an introductory call with a principal to see how independent cost management can de-risk your build."
+    text="Reach our Seattle or Portland team to see how independent cost and construction management can protect your budget and your design intent."
   />
 </BaseLayout>
 
@@ -156,7 +184,7 @@ const team = [
   }
 
   .page-hero .lead {
-    max-width: 60ch;
+    max-width: 62ch;
   }
 
   .about-grid {
@@ -211,6 +239,30 @@ const team = [
     color: #fff;
   }
 
+  /* Clients */
+  .client-grid {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 720px) {
+    .client-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .client-grid li {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--navy-800);
+    box-shadow: var(--shadow-sm);
+  }
+
   .team-card {
     text-align: center;
   }
@@ -223,7 +275,7 @@ const team = [
     display: grid;
     place-items: center;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #fff;
     background: linear-gradient(135deg, var(--navy-700), var(--navy-900));
   }
