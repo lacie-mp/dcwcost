@@ -1,0 +1,272 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const services = [
+  "Cost Estimating",
+  "Cost Planning & Control",
+  "Value Engineering",
+  "Risk & Contingency",
+  "Procurement Advisory",
+  "Claims & Final Account",
+  "Not sure yet",
+];
+
+const details = [
+  {
+    label: "Email",
+    value: "hello@dcwcost.com",
+    href: "mailto:hello@dcwcost.com",
+  },
+  { label: "Phone", value: "(214) 555-0142", href: "tel:+12145550142" },
+  {
+    label: "Office",
+    value: "1200 Commerce Street, Suite 450, Dallas, TX 75202",
+  },
+  { label: "Hours", value: "Mon–Fri, 8:00 AM – 6:00 PM CT" },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact DCW Cost to discuss estimating, cost planning, value engineering, and risk management for your construction project."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Contact us</span>
+      <h1>Let's talk about your project.</h1>
+      <p class="lead">
+        Tell us where your project stands and what you need. A principal will
+        respond within one business day — no sales pitch, just straight cost
+        advice.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- Form -->
+      <div class="contact-form-wrap">
+        <form
+          class="contact-form"
+          name="contact"
+          method="post"
+          action="#"
+          aria-label="Contact form"
+        >
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" required
+                autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text"
+                autocomplete="organization" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required
+                autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="service">How can we help?</label>
+            <select id="service" name="service">
+              {services.map((s) => <option value={s}>{s}</option>)}
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Project details</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Sector, budget range, current stage, and what you're trying to achieve."
+              required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Send message</button>
+          <p class="form-note">
+            By submitting, you agree to be contacted about your enquiry. We
+            never share your details.
+          </p>
+        </form>
+      </div>
+
+      <!-- Details -->
+      <aside class="contact-details">
+        <h2>Reach us directly</h2>
+        <ul>
+          {
+            details.map((d) => (
+              <li>
+                <span class="detail-label">{d.label}</span>
+                {d.href ? (
+                  <a href={d.href}>{d.value}</a>
+                ) : (
+                  <span class="detail-value">{d.value}</span>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+        <div class="response-card">
+          <strong>Fast, senior response</strong>
+          <p>
+            Your enquiry goes straight to a principal consultant — not a call
+            center. Expect a reply within one business day.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(180deg, var(--surface-alt), #fff);
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-hero .lead {
+    max-width: 60ch;
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 920px) {
+    .contact-grid {
+      grid-template-columns: 1.5fr 1fr;
+    }
+  }
+
+  .contact-form-wrap {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .field-row {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  @media (min-width: 560px) {
+    .field-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface-alt);
+    transition: border-color var(--transition), box-shadow var(--transition),
+      background var(--transition);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--navy-700);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(43, 79, 126, 0.15);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .contact-form .btn {
+    margin-top: 0.25rem;
+  }
+
+  .form-note {
+    margin: 0.9rem 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* Details */
+  .contact-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-details ul {
+    list-style: none;
+    display: grid;
+    gap: 1.25rem;
+    margin: 1.25rem 0 2rem;
+  }
+
+  .detail-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .detail-value {
+    color: var(--ink);
+  }
+
+  .response-card {
+    background: var(--navy-900);
+    color: #cdd9e6;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .response-card strong {
+    display: block;
+    color: #fff;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+
+  .response-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #b8c8db;
+  }
+</style>

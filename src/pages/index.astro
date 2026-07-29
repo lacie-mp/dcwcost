@@ -1,0 +1,300 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CallToAction from "../components/CallToAction.astro";
+
+const stats = [
+  { value: "$4.2B+", label: "Construction value managed" },
+  { value: "320+", label: "Projects delivered" },
+  { value: "8.5%", label: "Average cost savings identified" },
+  { value: "25 yrs", label: "In cost consulting" },
+];
+
+const services = [
+  {
+    title: "Cost Estimating",
+    text: "Detailed, benchmarked estimates from concept through construction documents so you can commit capital with confidence.",
+  },
+  {
+    title: "Cost Planning & Control",
+    text: "Live budgets, cash-flow forecasts, and change-order review that keep every project tracking to plan.",
+  },
+  {
+    title: "Value Engineering",
+    text: "Structured reviews that protect scope and quality while stripping avoidable cost out of the design.",
+  },
+  {
+    title: "Risk & Contingency",
+    text: "Quantified risk registers and contingency modeling that turn unknowns into a managed line item.",
+  },
+];
+
+const steps = [
+  {
+    n: "01",
+    title: "Understand",
+    text: "We review the brief, drawings, and objectives to establish a clear cost baseline.",
+  },
+  {
+    n: "02",
+    title: "Analyze",
+    text: "We benchmark, test scenarios, and expose the risks and opportunities in the numbers.",
+  },
+  {
+    n: "03",
+    title: "Advise",
+    text: "You get clear, decision-ready reporting — not spreadsheets you have to decode.",
+  },
+  {
+    n: "04",
+    title: "Control",
+    text: "We track costs through delivery, so surprises become decisions, not overruns.",
+  },
+];
+---
+
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Construction Cost Management</span>
+        <h1>Build with certainty over every dollar.</h1>
+        <p class="lead">
+          DCW Cost is an independent cost-management consultancy for owners,
+          developers, and contractors. We bring rigor to your budget so capital
+          projects finish on scope, on schedule, and on cost.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn--primary">Request a Consultation</a>
+          <a href="/projects" class="btn btn--outline">View Our Work</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-hidden="true">
+        <div class="hero-card">
+          <span class="hero-card-label">Project budget health</span>
+          <div class="bar"><span style="width: 92%"></span></div>
+          <div class="hero-card-rows">
+            <div><span>Committed</span><strong>$18.4M</strong></div>
+            <div><span>Forecast</span><strong>$18.9M</strong></div>
+            <div class="ok"><span>Contingency</span><strong>+$0.6M</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="grid grid--4 stats">
+        {
+          stats.map((s) => (
+            <div class="stat">
+              <div class="stat-value">{s.value}</div>
+              <div class="stat-label">{s.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Services overview -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What we do</span>
+        <h2>Cost expertise across the full project lifecycle</h2>
+        <p class="lead">
+          From feasibility to final account, we give you an independent, expert
+          view of the numbers at every stage.
+        </p>
+      </div>
+      <div class="grid grid--2">
+        {
+          services.map((s) => (
+            <article class="card card--hover">
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </article>
+          ))
+        }
+      </div>
+      <p class="services-more">
+        <a href="/services" class="btn btn--outline">See all services</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">How we work</span>
+        <h2>A disciplined, four-step approach</h2>
+      </div>
+      <div class="grid grid--4">
+        {
+          steps.map((step) => (
+            <div class="step">
+              <span class="step-n">{step.n}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</BaseLayout>
+
+<style>
+  .hero {
+    background:
+      radial-gradient(
+        1200px 500px at 85% -10%,
+        rgba(245, 166, 35, 0.12),
+        transparent 60%
+      ),
+      linear-gradient(180deg, #fff, var(--surface-alt));
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 940px) {
+    .hero-inner {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+
+  .hero-copy .lead {
+    max-width: 52ch;
+    color: var(--body);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.75rem;
+  }
+
+  /* Hero visual */
+  .hero-panel {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-card {
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 1.75rem;
+  }
+
+  .hero-card-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .bar {
+    height: 10px;
+    border-radius: 6px;
+    background: var(--surface-tint);
+    margin: 0.9rem 0 1.4rem;
+    overflow: hidden;
+  }
+
+  .bar span {
+    display: block;
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--navy-700), var(--amber-500));
+  }
+
+  .hero-card-rows {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .hero-card-rows div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-card-rows div:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .hero-card-rows span {
+    color: var(--muted);
+  }
+
+  .hero-card-rows strong {
+    color: var(--ink);
+  }
+
+  .hero-card-rows .ok strong {
+    color: #1f9d55;
+  }
+
+  /* Stats */
+  .stats {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    color: var(--navy-800);
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .services-more {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  /* Process steps */
+  .step-n {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--amber-600);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+
+  .step h3 {
+    margin-bottom: 0.35rem;
+  }
+
+  .step p {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin: 0;
+  }
+</style>

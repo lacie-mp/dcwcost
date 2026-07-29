@@ -1,0 +1,242 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CallToAction from "../components/CallToAction.astro";
+
+const values = [
+  {
+    title: "Independence",
+    text: "We work only for you. Our advice is never tied to a contractor, product, or commission — just your project's best interest.",
+  },
+  {
+    title: "Rigor",
+    text: "Every number is benchmarked, sourced, and defensible. We show our working so you can trust the conclusion.",
+  },
+  {
+    title: "Clarity",
+    text: "We translate complex cost data into plain, decision-ready reporting for boards, lenders, and project teams.",
+  },
+  {
+    title: "Partnership",
+    text: "We embed with your team from first concept to final account, staying accountable through delivery.",
+  },
+];
+
+const team = [
+  {
+    name: "Dana C. Whitfield",
+    role: "Founder & Principal",
+    bio: "25 years leading cost management on commercial, healthcare, and infrastructure programs across North America.",
+    initials: "DW",
+  },
+  {
+    name: "Marcus Reyes",
+    role: "Director, Cost Planning",
+    bio: "Chartered quantity surveyor specializing in early-stage estimating and value engineering for complex builds.",
+    initials: "MR",
+  },
+  {
+    name: "Priya Anand",
+    role: "Director, Risk & Analytics",
+    bio: "Leads quantitative risk modeling and data-driven benchmarking across the firm's project portfolio.",
+    initials: "PA",
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="DCW Cost is an independent construction cost-management consultancy built on rigor, clarity, and client-side advocacy."
+>
+  <!-- Page header -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">About DCW Cost</span>
+      <h1>Cost consultants who work only for the owner.</h1>
+      <p class="lead">
+        We founded DCW Cost on a simple idea: capital projects deserve
+        independent, expert cost advice that answers to no one but the client.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section">
+    <div class="container about-grid">
+      <div>
+        <span class="eyebrow">Our story</span>
+        <h2>A quarter-century of protecting project budgets</h2>
+        <p>
+          DCW Cost began in 2001 as a two-person estimating practice with a
+          conviction that owners were too often the last to know when a project
+          was heading over budget. We set out to change that — putting rigorous,
+          independent cost intelligence in the client's hands early enough to
+          act on it.
+        </p>
+        <p>
+          Today we advise owners, developers, public agencies, and contractors
+          across commercial, healthcare, education, industrial, and
+          infrastructure sectors. Our teams combine chartered quantity
+          surveying discipline with modern data analytics to give clients a
+          clear, continuous view of cost from feasibility through final account.
+        </p>
+        <p>
+          We stay deliberately independent and deliberately senior. When you
+          engage DCW Cost, you work directly with the people who own the
+          numbers.
+        </p>
+      </div>
+      <aside class="about-facts">
+        <h3>At a glance</h3>
+        <ul>
+          <li><span>Founded</span><strong>2001</strong></li>
+          <li><span>Headquarters</span><strong>Dallas, TX</strong></li>
+          <li><span>Projects delivered</span><strong>320+</strong></li>
+          <li><span>Value managed</span><strong>$4.2B+</strong></li>
+          <li><span>Sectors</span><strong>7 core markets</strong></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What we stand for</span>
+        <h2>Values that keep us on your side</h2>
+      </div>
+      <div class="grid grid--2">
+        {
+          values.map((v) => (
+            <article class="card card--hover">
+              <h3>{v.title}</h3>
+              <p>{v.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Leadership</span>
+        <h2>The people behind your numbers</h2>
+      </div>
+      <div class="grid grid--3">
+        {
+          team.map((member) => (
+            <article class="card team-card">
+              <div class="avatar" aria-hidden="true">
+                {member.initials}
+              </div>
+              <h3>{member.name}</h3>
+              <p class="role">{member.role}</p>
+              <p>{member.bio}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    heading="Let's talk about your project."
+    text="Book an introductory call with a principal to see how independent cost management can de-risk your build."
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(180deg, var(--surface-alt), #fff);
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-hero .lead {
+    max-width: 60ch;
+  }
+
+  .about-grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1.6fr 1fr;
+    }
+  }
+
+  .about-facts {
+    background: var(--navy-900);
+    color: #cdd9e6;
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .about-facts h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .about-facts ul {
+    list-style: none;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .about-facts li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .about-facts li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .about-facts span {
+    color: #93a6bd;
+  }
+
+  .about-facts strong {
+    color: #fff;
+  }
+
+  .team-card {
+    text-align: center;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--navy-700), var(--navy-900));
+  }
+
+  .team-card .role {
+    color: var(--amber-600);
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .team-card p:last-child {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+</style>

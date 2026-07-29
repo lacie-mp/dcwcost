@@ -1,0 +1,56 @@
+---
+interface Props {
+  heading?: string;
+  text?: string;
+}
+
+const {
+  heading = "Ready to bring certainty to your project budget?",
+  text = "Talk to our team about estimating, cost planning, and risk control for your next capital project.",
+} = Astro.props;
+---
+
+<section class="section cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>{heading}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="cta-actions">
+      <a href="/contact" class="btn btn--primary">Request a Consultation</a>
+      <a href="/services" class="btn btn--ghost">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    background: linear-gradient(135deg, var(--navy-900), var(--navy-700));
+    color: #dbe6f2;
+  }
+
+  .cta-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.75rem;
+  }
+
+  .cta-inner h2 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-inner p {
+    margin: 0;
+    max-width: 46ch;
+    color: #b8c8db;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+</style>

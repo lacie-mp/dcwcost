@@ -1,0 +1,190 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CallToAction from "../components/CallToAction.astro";
+
+const projects = [
+  {
+    name: "Riverside Medical Center",
+    sector: "Healthcare",
+    value: "$420M",
+    location: "Austin, TX",
+    summary:
+      "Full cost management for a 480-bed acute-care hospital, from feasibility estimating through final account.",
+    result: "Delivered 3% under GMP with a fully reconciled final account.",
+  },
+  {
+    name: "Gateway Logistics Park",
+    sector: "Industrial",
+    value: "$185M",
+    location: "Fort Worth, TX",
+    summary:
+      "Cost planning and value engineering across a four-building distribution campus on a fast-track schedule.",
+    result: "$14M of design cost removed without reducing usable capacity.",
+  },
+  {
+    name: "Northline Transit Extension",
+    sector: "Infrastructure",
+    value: "$650M",
+    location: "Dallas, TX",
+    summary:
+      "Independent estimate validation and risk modeling for a light-rail extension funded by public bonds.",
+    result: "Risk-adjusted budget accepted by the board on first submission.",
+  },
+  {
+    name: "Halcyon Mixed-Use Tower",
+    sector: "Commercial",
+    value: "$310M",
+    location: "Houston, TX",
+    summary:
+      "Cost control and change-order management for a 42-story residential and retail development.",
+    result: "Change-order exposure held below 2% of contract value.",
+  },
+  {
+    name: "Meridian University Science Hall",
+    sector: "Education",
+    value: "$96M",
+    location: "San Antonio, TX",
+    summary:
+      "Concept-to-construction estimating and lifecycle costing for a LEED Gold research facility.",
+    result: "Baseline budget held through three design iterations.",
+  },
+  {
+    name: "Cascade Water Treatment Plant",
+    sector: "Infrastructure",
+    value: "$240M",
+    location: "El Paso, TX",
+    summary:
+      "Quantitative risk analysis and contingency modeling for a municipal water treatment upgrade.",
+    result: "Contingency draw closed the program 6% below authorized budget.",
+  },
+];
+
+const sectors = ["All", ...new Set(projects.map((p) => p.sector))];
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected construction cost-management engagements by DCW Cost across healthcare, infrastructure, commercial, industrial, and education sectors."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Selected work</span>
+      <h1>Projects we've helped keep on budget.</h1>
+      <p class="lead">
+        A snapshot of engagements across sectors — each one measured by the same
+        standard: certainty over cost from day one to final account.
+      </p>
+      <ul class="chips" aria-label="Project sectors">
+        {sectors.map((s) => <li>{s}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        {
+          projects.map((p) => (
+            <article class="card card--hover project-card">
+              <div class="project-top">
+                <span class="tag">{p.sector}</span>
+                <span class="project-value">{p.value}</span>
+              </div>
+              <h3>{p.name}</h3>
+              <p class="project-loc">{p.location}</p>
+              <p>{p.summary}</p>
+              <p class="project-result">
+                <strong>Outcome:</strong> {p.result}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    heading="Your project could be next."
+    text="From a single independent estimate to full lifecycle cost management, we scale to fit the engagement."
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(180deg, var(--surface-alt), #fff);
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-hero .lead {
+    max-width: 60ch;
+  }
+
+  .chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .chips li {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy-800);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.9rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--amber-600);
+    background: rgba(245, 166, 35, 0.12);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .project-value {
+    font-weight: 800;
+    color: var(--navy-800);
+  }
+
+  .project-card h3 {
+    margin-bottom: 0.15rem;
+  }
+
+  .project-loc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .project-result {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.92rem;
+    color: var(--body);
+  }
+
+  .project-result strong {
+    color: var(--navy-800);
+  }
+</style>
