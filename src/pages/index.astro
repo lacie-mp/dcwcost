@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MarketIcon from '../components/MarketIcon.astro';
+import { sectors } from '../data/sectors.js';
 
 const stats = [
-  { num: '2012', label: 'Founded in the PNW' },
+  { num: '2013', label: 'Founded in the PNW' },
   { num: '400+', label: 'Projects every year' },
   { num: '2', label: 'Offices — Seattle & Portland' },
   { num: '100%', label: 'Employee-Owned Trust' },
@@ -43,11 +44,6 @@ const process = [
   { step: '04', title: 'Reconcile & report', body: 'Clear reporting at each milestone — no surprises, and a record you can stand behind.' },
 ];
 
-const markets = [
-  'Government', 'Healthcare', 'Higher Education', 'K-12',
-  'Parks', 'Ports', 'Transportation & Utilities', 'Zoos & Animal Welfare',
-];
-
 // Client / design-partner logos (white marks, shown on a dark section).
 const clients = [
   '1.png', '3.png', '4.png', '6.png', '7.png', '8.png', '9.png', '10.png',
@@ -62,19 +58,20 @@ const clients = [
 
 <Layout
   title="DCW Cost Management"
-  description="Drew Collaborative Works — independent, owner-centered cost and construction management serving Seattle and Portland since 2012. Woman-owned, employee-owned, 400+ projects a year."
+  description="Drew Collaborative Works — independent, women-owned and employee-owned cost and construction management serving Seattle and Portland since 2013. On the owner's side of the table, 400+ projects a year."
 >
   <!-- ============ HERO ============ -->
   <!-- To use a real DCW photo, drop it in /public and set
        style="--hero-img:url('/your-photo.jpg')" on .hero below. -->
   <section class="hero">
     <div class="container hero-inner">
-      <span class="hero-eyebrow">Drew Collaborative Works</span>
-      <h1>Collaboration is in the&nbsp;name</h1>
+      <span class="hero-eyebrow">Independent cost &amp; construction management</span>
+      <h1>On the owner's side, start to&nbsp;finish</h1>
       <p class="hero-lead">
-        Supporting innovative design teams and project owners with smart
-        management strategies, design-based cost consulting, and construction
-        management across the Pacific Northwest.
+        DCW is an independent, women-owned and employee-owned firm delivering
+        design-based cost consulting and owner-side construction management
+        across the Pacific Northwest. Collaboration is in our name — and your
+        budget is our only agenda.
       </p>
       <div class="hero-cta">
         <a href="/services" class="btn btn-primary btn-lg">Explore our services</a>
@@ -165,10 +162,10 @@ const clients = [
         </p>
       </div>
       <div class="grid grid-4 market-grid">
-        {markets.map((m, i) => (
-          <a href="/projects" class="market-tile" style={`--i:${i}`}>
-            <MarketIcon name={m} class="tile-ico" />
-            <span class="market-label">{m}</span>
+        {sectors.map((s, i) => (
+          <a href={`/sectors/${s.slug}`} class="market-tile" style={`--i:${i}`}>
+            <MarketIcon name={s.icon} class="tile-ico" />
+            <span class="market-label">{s.name}</span>
           </a>
         ))}
       </div>
@@ -221,8 +218,13 @@ const clients = [
         love to help you get it right.
       </p>
       <div class="mt-2">
-        <a href="/contact" class="btn btn-primary btn-lg">Collaborate Today!</a>
+        <a href="/contact" class="btn btn-primary btn-lg">Request a fee proposal</a>
       </div>
+      <p class="portal-note">
+        <span class="portal-dot" aria-hidden="true"></span>
+        Client portal — coming soon. A secure home for your project's cost data,
+        reporting, and documents.
+      </p>
     </div>
   </section>
 </Layout>
@@ -390,6 +392,19 @@ const clients = [
   }
 
   .cta-band { background: var(--mist-2); }
+  .portal-note {
+    margin: 1.5rem auto 0;
+    max-width: 46ch;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .portal-dot {
+    width: 8px; height: 8px; border-radius: 999px; background: var(--green);
+    flex: 0 0 auto; box-shadow: 0 0 0 3px rgba(125, 191, 67, 0.22);
+  }
 
   /* ---- Client / partner logo wall ----
      All supplied marks are white-on-transparent, so they sit on a dark

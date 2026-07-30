@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { sortedPosts } from '../../data/insights.js';
+
+const posts = sortedPosts();
+const [lead, ...rest] = posts;
+---
+
+<Layout
+  title="Insights"
+  description="Perspective and cost intelligence from DCW Cost Management — on independent cost management, estimating methodology, whole-life cost, and Pacific Northwest public-sector cost trends."
+>
+  <PageHeader
+    eyebrow="Insights"
+    title="Perspective &amp; cost intelligence"
+    lead="Notes from the owner's side of the table — on how we estimate, what independence really means, and the cost forces shaping public work across the Pacific Northwest."
+  />
+
+  <!-- ---- Lead article ---- -->
+  <section class="section">
+    <div class="container">
+      <a href={`/insights/${lead.slug}`} class="lead-post">
+        <div class="lead-copy">
+          <span class="post-cat">{lead.category}</span>
+          <h2>{lead.title}</h2>
+          <p class="post-excerpt">{lead.excerpt}</p>
+          <p class="post-meta">{lead.author} · {lead.dateLabel}</p>
+          <span class="proj-more">Read the article →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ---- Grid ---- -->
+  <section class="section section-mist">
+    <div class="container">
+      <div class="grid grid-3">
+        {rest.map((p) => (
+          <a href={`/insights/${p.slug}`} class="card card-accent card-hover post-card">
+            <span class="post-cat">{p.category}</span>
+            <h3 style="margin-top:0.6rem">{p.title}</h3>
+            <p class="post-excerpt">{p.excerpt}</p>
+            <p class="post-meta">{p.dateLabel}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Newsletter / CTA ---- -->
+  <section class="section center">
+    <div class="container">
+      <h2 class="section-title center">Want our Pacific Northwest cost notes?</h2>
+      <p class="lead mx-auto" style="text-align:center">
+        Our recurring cost-trends series covers escalation, bid climate, labor,
+        and materials for WA and OR public owners. Tell us what you'd like us to
+        cover.
+      </p>
+      <div class="mt-2">
+        <a href="/contact" class="btn btn-primary btn-lg">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lead-post {
+    display: block; color: inherit;
+    border: 1px solid var(--line); border-left: 5px solid var(--green);
+    border-radius: var(--radius-lg); padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: var(--mist); box-shadow: var(--shadow-sm);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .lead-post:hover { color: inherit; transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .lead-copy { max-width: 60ch; }
+  .lead-post h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); margin: 0.5rem 0 0.75rem; }
+
+  .post-card { display: block; color: inherit; }
+  .post-card:hover { color: inherit; }
+  .post-cat {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--green-ink);
+  }
+  .post-excerpt { color: var(--body); font-size: 0.96rem; margin: 0.5rem 0 0.75rem; }
+  .post-meta { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.5rem; }
+  .proj-more { color: var(--green-ink); font-weight: 700; font-size: 0.9rem; }
+</style>

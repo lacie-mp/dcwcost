@@ -1,11 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import { sectors } from '../data/sectors.js';
 
 const costServices = [
   { title: 'Third-Party Cost Estimation (ICE)', body: 'Budget and estimate validation using independent third-party cost estimating — accounting for soft costs, relocation, and other owner expenditures.' },
   { title: 'Design-Based Cost Management', body: 'Cost intelligence embedded through every design phase, so budgets and design decisions stay aligned before changes get expensive.' },
   { title: 'Business Case Cost Planning', body: 'Early-stage planning that turns a concept into a fundable business case owners can take forward with confidence.' },
+  { title: 'Feasibility Studies', body: 'Early cost and viability analysis that tests whether a concept pencils out — before an owner commits real money to it.' },
+  { title: 'Life-Cycle Cost Analysis & O&M', body: 'Whole-life cost analysis (LCCA) that weighs operations, maintenance, energy, and replacement — so owners choose what is cheapest to own, not just to build.' },
   { title: 'Cost Review & Reporting', body: 'Ongoing review and transparent reporting that keep every stakeholder aligned on where the budget stands.' },
   { title: 'Master Planning & Pre-Design', body: 'Cost guidance at the earliest stages, shaping scope and program against a realistic, market-based budget.' },
   { title: 'Reconciliation Management', body: 'Structured reconciliation between parties and phases — resolving differences before they become disputes.' },
@@ -20,10 +23,6 @@ const cmServices = [
   { title: 'Staff Augmentation', body: 'Experienced cost and project professionals who plug into your team exactly when you need them.' },
 ];
 
-const markets = [
-  'Government', 'Healthcare', 'Education', 'Parks',
-  'Transportation', 'Community & Arts', 'Utilities', 'Zoos & Animal Welfare',
-];
 ---
 
 <Layout
@@ -97,10 +96,12 @@ const markets = [
         </p>
       </div>
       <ul class="market-check grid grid-4">
-        {markets.map((m) => (
+        {sectors.map((s) => (
           <li>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-            {m}
+            <a href={`/sectors/${s.slug}`}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+              {s.name}
+            </a>
           </li>
         ))}
       </ul>
@@ -189,7 +190,8 @@ const markets = [
     margin: 0;
     padding: 0;
   }
-  .market-check li {
+  .market-check li { padding: 0; }
+  .market-check a {
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -197,5 +199,6 @@ const markets = [
     color: var(--ink);
     padding: 0.6rem 0;
   }
+  .market-check a:hover { color: var(--green-ink); }
   .market-check svg { width: 22px; height: 22px; color: var(--green); flex: 0 0 auto; }
 </style>

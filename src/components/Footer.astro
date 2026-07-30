@@ -4,10 +4,22 @@ const year = 2026;
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
   { href: '/services', label: 'Services' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/careers', label: 'Careers' },
   { href: '/employee-owned', label: 'Employee-Owned' },
   { href: '/contact', label: 'Contact' },
+];
+
+// Certification / ownership signals. Public agencies filter vendors on these,
+// so they belong site-wide, not only on the About page.
+const certs = [
+  'Woman-Owned (WBE)',
+  'WOSB Certified',
+  'WA OMWBE',
+  'OR COBID',
+  'Employee-Owned Trust',
 ];
 const { pathname } = Astro.url;
 const isActive = (href) =>
@@ -56,6 +68,10 @@ const isActive = (href) =>
       </a>
     </div>
 
+    <ul class="cert-row" aria-label="Certifications and ownership">
+      {certs.map((c) => <li class="cert-badge">{c}</li>)}
+    </ul>
+
     <nav class="footer-nav" aria-label="Footer">
       {navLinks.map((l, i) => (
         <>
@@ -67,7 +83,7 @@ const isActive = (href) =>
 
     <p class="footer-copy">
       &copy; {year}, DCW Cost Management. All Rights Reserved.
-      <span class="cert">Woman-Owned (WBE / WOSB) &middot; Employee-Owned Trust</span>
+      <span class="cert">Independent · Owner-side · Pacific Northwest</span>
     </p>
   </div>
 </footer>
@@ -119,14 +135,35 @@ const isActive = (href) =>
   .foot-social svg { width: 20px; height: 20px; }
   .foot-social:hover { background: var(--blue); color: #fff; }
 
+  .cert-row {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 2rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .cert-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(30, 77, 155, 0.08);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+  }
+
   .footer-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 0.65rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
   }
   .footer-nav a {
     font-weight: 600;

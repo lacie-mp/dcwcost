@@ -2,25 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import MarketIcon from '../components/MarketIcon.astro';
+import { projects, featuredProjects } from '../data/projects.js';
+import { sectors } from '../data/sectors.js';
 
-const featured = {
-  name: 'Colman Dock',
-  sector: 'Transportation & Utilities · Marine',
-  client: 'Washington State Ferries (WSDOT)',
-  body:
-    'Independent cost management and estimating for the replacement of one of the busiest ferry terminals on the West Coast. DCW developed a comparative cost estimate to reconcile with the contractor across the Entry Building and Elevated Pedestrian Connector, and reviewed change orders spanning dry systems, electrical, mechanical, and structural work, in-water infrastructure, a temporary pedestrian bridge, and roadway modifications — all while the terminal stayed in full operation.',
-};
-
-const markets = [
-  { name: 'Government', body: 'Independent cost and construction management for civic buildings, public works, and agency facilities — keeping public dollars accountable and defensible.' },
-  { name: 'Healthcare', body: 'Cost intelligence for complex, highly regulated medical environments, where budget certainty and phased delivery matter most.' },
-  { name: 'Higher Education', body: 'Estimating and owner-side management for campus buildings and infrastructure, aligning cost with institutional priorities.' },
-  { name: 'K-12', body: 'Cost planning and stewardship for schools and district facilities, helping owners deliver on bond and levy commitments.' },
-  { name: 'Parks', body: 'Cost management for parks, recreation, and public open-space projects, from concept planning through construction.' },
-  { name: 'Ports', body: 'Estimating and construction management for marine and port facilities, supporting delivery in demanding operational settings.' },
-  { name: 'Transportation & Utilities', body: 'Owner-focused cost and construction management for transit, roadway, and utility infrastructure across the region.' },
-  { name: 'Zoos & Animal Welfare', body: 'Specialized cost management for zoo, aquarium, and animal-care facilities, balancing budget with the unique needs of these environments.' },
-];
+const featured = featuredProjects()[0];
+const rest = projects.filter((p) => p.slug !== featured.slug);
 ---
 
 <Layout
@@ -30,45 +16,67 @@ const markets = [
   <PageHeader
     eyebrow="Projects"
     title="Owner-centered work across the sectors that matter"
-    lead="From landmark marine terminals to schools, parks, and public infrastructure, DCW helps owners deliver with confidence — more than 400 projects every year."
+    lead="From landmark marine terminals to schools, campuses, and public infrastructure, DCW helps owners deliver with confidence — more than 400 projects every year."
   />
 
-  <!-- ---- Colman Dock case study (verified) ---- -->
+  <!-- ---- Featured case study ---- -->
   <section class="section">
     <div class="container featured">
       <div class="featured-media">
-        <img src="/qtq80-gQrixd-2048x1404.jpeg" alt="" loading="lazy" decoding="async" />
+        <img src={featured.image} alt="" loading="lazy" decoding="async" />
         <span class="tag">{featured.sector}</span>
       </div>
       <div class="featured-body">
-        <span class="eyebrow">Case study</span>
-        <h2 class="section-title"><strong>{featured.name}</strong><br />Seattle Ferry Terminal</h2>
+        <span class="eyebrow">Featured case study</span>
+        <h2 class="section-title"><strong>{featured.name}</strong><br />{featured.subtitle}</h2>
         <p class="client-line"><strong>Client:</strong> {featured.client}</p>
-        <p>{featured.body}</p>
-        <a href="/contact" class="btn btn-primary mt-1">Discuss a project like this</a>
+        <p>{featured.summary}</p>
+        <a href={`/projects/${featured.slug}`} class="btn btn-primary mt-1">Read the case study</a>
       </div>
     </div>
   </section>
 
-  <!-- ---- Markets we serve ---- -->
+  <!-- ---- Case-study library ---- -->
   <section class="section section-mist">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Selected projects</span>
+        <h2 class="section-title underline-accent">A sample of our&nbsp;work</h2>
+      </div>
+      <div class="grid grid-3">
+        {rest.map((p) => (
+          <a href={`/projects/${p.slug}`} class="card card-accent card-hover proj-link">
+            <span class="tag">{p.sector}</span>
+            <h3 style="margin-top:0.7rem">{p.name}</h3>
+            <p class="proj-client">{p.client}</p>
+            <p>{p.summary}</p>
+            <span class="proj-more">Read the case study →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Sectors ---- -->
+  <section class="section">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Markets we serve</span>
         <h2 class="section-title underline-accent">Deep experience across public &amp; institutional&nbsp;sectors</h2>
         <p class="lead">
           DCW brings the same independent, owner-first discipline to every market
-          we work in — giving owners cost clarity from first business case
-          through closeout.
+          we work in — giving owners cost clarity from first business case through
+          closeout. Explore a sector to see how we help.
         </p>
       </div>
       <div class="grid grid-4 market-cards">
-        {markets.map((m) => (
-          <div class="card card-accent card-hover">
-            <MarketIcon name={m.name} class="mc-ico" />
-            <h3>{m.name}</h3>
-            <p>{m.body}</p>
-          </div>
+        {sectors.map((s) => (
+          <a href={`/sectors/${s.slug}`} class="card card-accent card-hover sector-card">
+            <MarketIcon name={s.icon} class="mc-ico" />
+            <h3>{s.name}</h3>
+            <p>{s.tagline}</p>
+            <span class="proj-more">Explore {s.name} →</span>
+          </a>
         ))}
       </div>
     </div>
@@ -83,7 +91,7 @@ const markets = [
         civic, transit, or public project.
       </p>
       <div class="mt-2">
-        <a href="/contact" class="btn btn-primary btn-lg">Collaborate Today!</a>
+        <a href="/contact" class="btn btn-primary btn-lg">Request a fee proposal</a>
       </div>
     </div>
   </section>
@@ -111,7 +119,14 @@ const markets = [
   .client-line { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; }
   .client-line strong { color: var(--blue); }
 
+  .proj-link { display: block; color: inherit; }
+  .proj-link:hover { color: inherit; }
+  .proj-client { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .proj-more { color: var(--green-ink); font-weight: 700; font-size: 0.9rem; }
+
   .market-cards h3 { font-size: 1.15rem; }
-  .market-cards p { color: var(--muted); font-size: 0.95rem; margin: 0; }
+  .market-cards p { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.75rem; }
+  .sector-card { display: block; color: inherit; }
+  .sector-card:hover { color: inherit; }
   :global(.mc-ico) { width: 40px; height: 40px; color: var(--blue); margin-bottom: 0.85rem; }
 </style>

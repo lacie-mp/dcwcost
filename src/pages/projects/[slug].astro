@@ -1,0 +1,103 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects, getProject } from '../../data/projects.js';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const more = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
+---
+
+<Layout
+  title={`${project.name} — Projects`}
+  description={`${project.name}: ${project.summary}`}
+>
+  <!-- ---- Hero ---- -->
+  <section
+    class:list={["case-hero", { "has-img": project.image }]}
+    style={project.image ? `--case-img:url('${project.image}')` : undefined}
+  >
+    <div class="container">
+      <a href="/projects" class="back-link">← All projects</a>
+      <span class="tag">{project.sector}</span>
+      <h1>{project.name}</h1>
+      <p class="case-sub">{project.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- ---- Body ---- -->
+  <section class="section">
+    <div class="container case-grid">
+      <div class="case-body">
+        <p class="lead">{project.summary}</p>
+        {project.body.map((para) => <p>{para}</p>)}
+        <div class="mt-2">
+          <a href="/contact" class="btn btn-primary">Discuss a project like this</a>
+        </div>
+      </div>
+      <aside class="case-aside">
+        <h3>Project at a glance</h3>
+        <dl class="fact-list">
+          <div class="fact"><dt>Client</dt><dd>{project.client}</dd></div>
+          {project.facts.map((f) => (
+            <div class="fact"><dt>{f.label}</dt><dd>{f.value}</dd></div>
+          ))}
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ---- More work ---- -->
+  <section class="section section-mist">
+    <div class="container">
+      <div class="section-head"><h2 class="section-title underline-accent">More work</h2></div>
+      <div class="grid grid-3">
+        {more.map((p) => (
+          <a href={`/projects/${p.slug}`} class="card card-accent card-hover proj-link">
+            <span class="tag">{p.sector}</span>
+            <h3 style="margin-top:0.7rem">{p.name}</h3>
+            <p>{p.summary}</p>
+            <span class="proj-more">Read more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .case-hero {
+    position: relative; color: #fff;
+    background:
+      linear-gradient(180deg, rgba(15, 44, 88, 0.82), rgba(15, 44, 88, 0.9)),
+      linear-gradient(120deg, var(--blue-900), var(--blue));
+    padding-block: clamp(3rem, 8vw, 5.5rem);
+  }
+  .case-hero.has-img {
+    background:
+      linear-gradient(180deg, rgba(15, 30, 55, 0.72), rgba(15, 30, 55, 0.86)),
+      var(--case-img) center / cover no-repeat;
+  }
+  .back-link { display: inline-block; color: #cde0ff; font-weight: 600; font-size: 0.85rem; margin-bottom: 1.25rem; }
+  .back-link:hover { color: #fff; }
+  .case-hero .tag { background: rgba(255,255,255,0.18); color: #fff; }
+  .case-hero h1 { color: #fff; margin: 0.75rem 0 0.35rem; }
+  .case-sub { color: #dbe6f7; font-size: clamp(1.05rem, 2vw, 1.3rem); margin: 0; }
+
+  .case-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  @media (max-width: 860px) { .case-grid { grid-template-columns: 1fr; } }
+  .case-aside {
+    background: var(--mist); border: 1px solid var(--line); border-top: 4px solid var(--green);
+    border-radius: var(--radius-lg); padding: clamp(1.4rem, 3vw, 1.9rem);
+  }
+  .case-aside h3 { margin-top: 0; }
+  .fact-list { margin: 1rem 0 0; display: grid; gap: 0.9rem; }
+  .fact dt { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 700; }
+  .fact dd { margin: 0.15rem 0 0; color: var(--ink); font-weight: 600; }
+
+  .proj-link { display: block; color: inherit; }
+  .proj-link:hover { color: inherit; }
+  .proj-more { color: var(--green-ink); font-weight: 700; font-size: 0.9rem; }
+</style>

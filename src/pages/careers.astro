@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const reasons = [
+  { title: 'A real stake, no buy-in', body: 'DCW is held in an Employee Ownership Trust. Every employee shares in the success they help create — you don’t buy in, and it can’t be sold out from under you.' },
+  { title: 'A voice in the future', body: 'The Trust’s board includes representatives from cost, project management, marketing, and innovation. The direction of the firm is shaped by the people doing the work.' },
+  { title: 'Owner-side work that matters', body: 'We work on the projects communities depend on — ferry terminals, schools, campuses, transit, and civic buildings — always on the owner’s side of the table.' },
+  { title: 'Room to grow', body: 'From associate to senior cost manager and beyond, we invest in careers. Continuity is the point of the way we’re owned.' },
+];
+
+const looking = [
+  'Cost estimators and cost managers',
+  'Project and construction managers',
+  "Owner's representatives",
+  'Emerging professionals early in their careers',
+];
+---
+
+<Layout
+  title="Careers"
+  description="Build a career at DCW Cost Management — a woman-owned, employee-owned (EOT) cost and construction management firm in Seattle and Portland. A real stake in owner-side work that matters."
+>
+  <PageHeader
+    eyebrow="Careers"
+    title="A stake in work that matters"
+    lead="We're a woman-owned, employee-owned firm of critical thinkers and collaborators. When DCW thrives, so does everyone who helped build it."
+  />
+
+  <!-- ---- Why DCW ---- -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why build a career here</span>
+        <h2 class="section-title underline-accent">Ownership you can feel in the&nbsp;work</h2>
+        <p class="lead">
+          DCW is one of the first Employee Ownership Trusts in Washington State.
+          Shared ownership isn't a perk we bolt on — it's how the firm is built,
+          and it changes what it feels like to work here.
+        </p>
+      </div>
+      <div class="grid grid-2">
+        {reasons.map((r) => (
+          <div class="card card-accent card-hover">
+            <h3>{r.title}</h3>
+            <p>{r.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="center mt-2">
+        <a href="/employee-owned" class="btn btn-outline">How we're owned</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Who we look for ---- -->
+  <section class="section section-blue">
+    <div class="container who-grid">
+      <div>
+        <span class="eyebrow">Who we look for</span>
+        <h2 class="section-title">Critical thinkers &amp;&nbsp;collaborators</h2>
+        <p class="lead" style="color:#dbe6f7">
+          We hire people who care about getting it right for the owner, who
+          communicate clearly, and who want to help build the Pacific Northwest.
+          We're often interested in talking with:
+        </p>
+      </div>
+      <ul class="who-list">
+        {looking.map((l) => (
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+            {l}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---- Apply CTA ---- -->
+  <section class="section center">
+    <div class="container">
+      <h2 class="section-title center">Introduce yourself</h2>
+      <p class="lead mx-auto" style="text-align:center">
+        We don't always have a role posted, but we're always glad to meet good
+        people. Send us a note and a résumé — tell us what kind of work you're
+        looking for, and we'll be in touch.
+      </p>
+      <div class="mt-2">
+        <a href="/contact" class="btn btn-primary btn-lg">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .who-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem); align-items: center;
+  }
+  @media (max-width: 820px) { .who-grid { grid-template-columns: 1fr; } }
+  .who-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
+  .who-list li {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-weight: 600; color: #fff; font-size: 1.05rem;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--radius); padding: 0.8rem 1rem;
+  }
+  .who-list svg { width: 22px; height: 22px; color: var(--green); flex: 0 0 auto; }
+</style>

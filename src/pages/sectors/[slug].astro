@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import MarketIcon from '../../components/MarketIcon.astro';
+import { sectors } from '../../data/sectors.js';
+import { projectsForSector } from '../../data/projects.js';
+
+export function getStaticPaths() {
+  return sectors.map((s) => ({ params: { slug: s.slug }, props: { sector: s } }));
+}
+
+const { sector } = Astro.props;
+const related = projectsForSector(sector.slug);
+const others = sectors.filter((s) => s.slug !== sector.slug);
+---
+
+<Layout
+  title={`${sector.name} — Sectors`}
+  description={`DCW Cost Management: independent, owner-side cost and construction management for ${sector.name.toLowerCase()} projects across the Pacific Northwest. ${sector.tagline}`}
+>
+  <PageHeader eyebrow="Sectors" title={sector.name} lead={sector.lead} />
+
+  <!-- ---- Overview + services ---- -->
+  <section class="section">
+    <div class="container sector-grid">
+      <div class="sector-body">
+        <MarketIcon name={sector.icon} class="sector-ico" />
+        <h2 class="section-title"><strong>{sector.tagline}</strong></h2>
+        {sector.body.map((para) => <p>{para}</p>)}
+        <div class="mt-2">
+          <a href="/contact" class="btn btn-primary">Talk to a cost manager</a>
+        </div>
+      </div>
+      <aside class="sector-aside">
+        <h3>How we help {sector.name.toLowerCase()} owners</h3>
+        <ul class="check-list">
+          {sector.services.map((s) => <li>{s}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ---- Related work ---- -->
+  {related.length > 0 && (
+    <section class="section section-mist">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Selected work</span>
+          <h2 class="section-title underline-accent">{sector.name} projects</h2>
+        </div>
+        <div class="grid grid-2">
+          {related.map((p) => (
+            <a href={`/projects/${p.slug}`} class="card card-accent card-hover proj-link">
+              <span class="tag">{p.sector}</span>
+              <h3 style="margin-top:0.7rem">{p.name}</h3>
+              <p class="proj-client">{p.client}</p>
+              <p>{p.summary}</p>
+              <span class="proj-more">Read the case study →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ---- Other sectors ---- -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <h2 class="section-title center">Other sectors we serve</h2>
+      </div>
+      <div class="sector-chips">
+        {others.map((s) => (
+          <a href={`/sectors/${s.slug}`} class="sector-chip">
+            <MarketIcon name={s.icon} class="chip-ico" />
+            <span>{s.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- CTA ---- -->
+  <section class="section section-blue center">
+    <div class="container">
+      <h2 class="section-title center">Have a {sector.name.toLowerCase()} project?</h2>
+      <p class="lead mx-auto" style="text-align:center;color:#dbe6f7">
+        We'd welcome the chance to talk through how DCW's independent, owner-side
+        approach can support your next project.
+      </p>
+      <div class="mt-2">
+        <a href="/contact" class="btn btn-primary btn-lg">Request a fee proposal</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sector-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (max-width: 860px) { .sector-grid { grid-template-columns: 1fr; } }
+  :global(.sector-ico) { width: 56px; height: 56px; color: var(--blue); margin-bottom: 1rem; }
+  .sector-aside {
+    background: var(--mist);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--green);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+  .sector-aside h3 { margin-top: 0; }
+  .check-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
+  .check-list li { position: relative; padding-left: 1.7rem; color: var(--body); font-size: 0.96rem; }
+  .check-list li::before {
+    content: ""; position: absolute; left: 0; top: 0.5em;
+    width: 0.7rem; height: 0.7rem; background: var(--green); border-radius: 2px;
+  }
+
+  .proj-link { display: block; color: inherit; }
+  .proj-link:hover { color: inherit; }
+  .proj-client { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .proj-more { color: var(--green-ink); font-weight: 700; font-size: 0.9rem; }
+
+  .sector-chips { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+  .sector-chip {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+    padding: 0.55rem 1.1rem; color: var(--blue); font-weight: 600; font-size: 0.9rem;
+    transition: all 0.16s ease;
+  }
+  .sector-chip:hover { border-color: var(--blue); background: var(--mist); color: var(--blue); }
+  :global(.chip-ico) { width: 22px; height: 22px; color: var(--blue); }
+</style>

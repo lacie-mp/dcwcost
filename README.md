@@ -1,21 +1,41 @@
 # DCW Cost Management
 
-Marketing website for **DCW Cost Management** — an independent, owner-centered
-cost and construction management firm serving the Pacific Northwest since 2014.
-Women-owned and WBE/WOSB certified.
+Marketing website for **DCW Cost Management** (Drew Collaborative Works) — an
+independent, owner-centered cost and construction management firm serving the
+Pacific Northwest since 2013. Women-owned (WBE/WOSB) and employee-owned (EOT).
 
 Built with [Astro](https://astro.build) and deployed on
 [Netlify](https://www.netlify.com).
 
 ## Pages
 
-| Route        | Description                                                        |
-| ------------ | ------------------------------------------------------------------ |
-| `/`          | Home — firm overview, two service pillars, process, featured work  |
-| `/about`     | Firm story, values, and leadership team                            |
-| `/services`  | Cost Management and Construction Management service pillars         |
-| `/projects`  | Landmark projects with sector, client, and DCW's role              |
-| `/contact`   | Offices, phone, email, and an enquiry form                         |
+| Route                 | Description                                                       |
+| --------------------- | ---------------------------------------------------------------- |
+| `/`                   | Home — firm overview, service pillars, process, featured work    |
+| `/about`              | Firm story, values, and leadership team                          |
+| `/services`           | Cost Management and Construction Management services             |
+| `/projects`           | Featured case study + case-study library + sectors               |
+| `/projects/[slug]`    | Individual project case studies                                  |
+| `/sectors/[slug]`     | Per-sector landing pages (government, healthcare, K-12, …)       |
+| `/insights`           | Insights hub — perspective & PNW cost intelligence              |
+| `/insights/[slug]`    | Individual articles                                              |
+| `/careers`            | Careers, built around the Employee Ownership Trust               |
+| `/employee-owned`     | The EOT story                                                    |
+| `/contact`            | Offices, phone, email, and an enquiry form                       |
+
+## Content lives in data files
+
+Editable content is centralized in `src/data/` so copy changes don't require
+touching page markup:
+
+- `sectors.js` — sector landing pages + market grids
+- `projects.js` — project case studies
+- `insights.js` — Insights articles
+
+> **⚠️ Verify before launch:** the team roster in `src/pages/about.astro`, the
+> testimonials, and the founding year (set to 2013) are drawn from public
+> record and need confirmation against DCW's own records. Project case studies
+> in `src/data/projects.js` should likewise be confirmed and expanded.
 
 ## Local development
 
