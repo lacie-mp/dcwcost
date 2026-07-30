@@ -24,21 +24,27 @@ const values = [
 const team = [
   {
     name: "Trish Drew",
-    role: "Founder & EOT Board Chair",
-    bio: "Spent a career in and around construction before founding DCW in 2014, and led the firm's two-year move to an employee ownership trust.",
+    role: "Founder",
+    bio: "Founded DCW in 2014 and continues to guide the firm's mission of independent, owner-centered cost and construction management.",
     initials: "TD",
   },
   {
-    name: "Tim Ausink",
-    role: "Managing Director",
-    bio: "Oversees day-to-day operations and strategic execution across the firm's cost and construction management practices.",
-    initials: "TA",
+    name: "Brian Thompson",
+    role: "CEO",
+    bio: "Leads DCW's strategy and day-to-day operations across the firm's cost and construction management practices.",
+    initials: "BT",
   },
   {
-    name: "DCW Cost & Project Teams",
-    role: "Estimators & Managers",
-    bio: "A Seattle- and Portland-based team of cost estimators and project managers supporting more than 400 projects a year.",
-    initials: "DCW",
+    name: "Rachel Quimby",
+    role: "Associate Director of Systems & Innovation",
+    bio: "Drives the systems, tools, and process innovation that keep DCW's estimating and project delivery consistent and data-informed.",
+    initials: "RQ",
+  },
+  {
+    name: "Preeti Pustake",
+    role: "Senior Cost Manager",
+    bio: "Leads cost management engagements, delivering independent estimates and reconciliation for owners across the portfolio.",
+    initials: "PP",
   },
 ];
 
@@ -94,9 +100,9 @@ const clients = [
           In 2025 DCW transitioned to an Employee Ownership Trust, one of the
           first in Washington State. The move secured the firm's continuity and
           its status as a women-owned business, with women making up more than
-          half of DCW's management and operations. Founder Trish Drew now
-          anchors the EOT board while Managing Director Tim Ausink leads
-          day-to-day operations.
+          half of DCW's management and operations. Founder Trish Drew continues
+          to guide the firm's mission alongside CEO Brian Thompson and the
+          leadership team.
         </p>
       </div>
       <aside class="about-facts">
@@ -153,7 +159,7 @@ const clients = [
         <span class="eyebrow">Leadership</span>
         <h2>The people behind your numbers</h2>
       </div>
-      <div class="grid grid--3">
+      <div class="grid grid--4">
         {
           team.map((member) => (
             <article class="card team-card">
