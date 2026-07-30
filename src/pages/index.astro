@@ -2,91 +2,77 @@
 import Layout from '../layouts/Layout.astro';
 
 const stats = [
-  { num: '2014', label: 'Founded' },
-  { num: '400+', label: 'Projects each year' },
+  { num: '2012', label: 'Founded in the PNW' },
+  { num: '400+', label: 'Projects every year' },
   { num: '2', label: 'Offices — Seattle & Portland' },
-  { num: 'WBE/WOSB', label: 'Certified women-owned' },
+  { num: '100%', label: 'Employee-Owned Trust' },
 ];
 
 const pillars = [
   {
-    tag: 'Pillar One',
-    title: 'Cost Management',
+    tag: 'Cost Management',
+    title: 'Numbers owners can trust — and defend.',
     body:
-      'Independent, third-party estimating and cost intelligence at every phase — from first business case through reconciliation. We give owners numbers they can trust and defend.',
+      'Independent, third-party cost intelligence at every phase, from the first business case through final reconciliation. No agenda but yours.',
     points: [
-      'Third-party estimating',
+      'Third-party cost estimating (ICE)',
       'Design-based cost management',
       'Business-case cost planning',
       'Cost review, reporting & reconciliation',
     ],
   },
   {
-    tag: 'Pillar Two',
-    title: 'Construction Management',
+    tag: 'Construction Management',
+    title: 'Owner-side leadership, start to finish.',
     body:
-      'Owner-side leadership that keeps schedule, budget, and quality aligned with your goals — from program planning through construction and closeout.',
+      'Hands-on management that keeps schedule, budget, and quality aligned with your goals — from program planning through closeout.',
     points: [
       'Program, project & construction management',
       "Owner's representation",
-      'Change-order review',
-      'Constructability coordination',
+      'Alternative delivery consulting',
+      'Change-order review & staff augmentation',
     ],
   },
 ];
 
 const process = [
-  {
-    step: '01',
-    title: 'Understand the owner',
-    body: 'We start with your goals, constraints, and risk tolerance — not a template. Every engagement is scoped around what success means to you.',
-  },
-  {
-    step: '02',
-    title: 'Establish the baseline',
-    body: 'Independent estimates and a clear business case give you a defensible baseline before commitments are made.',
-  },
-  {
-    step: '03',
-    title: 'Steward through delivery',
-    body: 'We track cost and scope against that baseline, review change, and keep decisions transparent from design through construction.',
-  },
-  {
-    step: '04',
-    title: 'Reconcile & report',
-    body: 'Clear reporting and reconciliation at every milestone means no surprises — and a record you can stand behind.',
-  },
+  { step: '01', title: 'Understand the owner', body: 'We start with your goals, constraints, and risk tolerance — not a template.' },
+  { step: '02', title: 'Set a defensible baseline', body: 'Independent estimates and a clear business case, before commitments are made.' },
+  { step: '03', title: 'Steward the delivery', body: 'We track cost and scope, review change, and keep every decision transparent.' },
+  { step: '04', title: 'Reconcile & report', body: 'Clear reporting at each milestone — no surprises, and a record you can stand behind.' },
 ];
 
-const featured = [
-  { name: 'Colman Dock', sector: 'Transportation / Marine' },
-  { name: 'University Link Light Rail Station', sector: 'Transit' },
-  { name: 'Mount Vernon Library Commons', sector: 'Civic / Library' },
-  { name: 'Charles D. Cameron Public Services Building', sector: 'Government' },
+const markets = [
+  'Government', 'Healthcare', 'Higher Education', 'K-12',
+  'Parks', 'Ports', 'Transportation & Utilities', 'Zoos & Animal Welfare',
 ];
 ---
 
-<Layout title="DCW Cost Management" description="Independent, owner-centered cost and construction management firm serving Seattle and Portland since 2014. Women-owned, WBE/WOSB certified, 400+ projects a year.">
-  <!-- Hero -->
+<Layout
+  title="DCW Cost Management"
+  description="Drew Collaborative Works — independent, owner-centered cost and construction management serving Seattle and Portland since 2012. Woman-owned, employee-owned, 400+ projects a year."
+>
+  <!-- ============ HERO ============ -->
+  <!-- To use a real DCW photo, drop it in /public and set
+       style="--hero-img:url('/your-photo.jpg')" on .hero below. -->
   <section class="hero">
     <div class="container hero-inner">
-      <span class="eyebrow" style="color:#e6b98a">Owner-centered. Independent. Trusted.</span>
-      <h1>Cost &amp; construction management, built entirely around the&nbsp;owner.</h1>
-      <p class="lead" style="color:#d3dde6">
-        DCW is an independent cost and construction management firm serving the
-        Pacific Northwest since 2014. Women-owned and WBE/WOSB certified, we give
-        owners the clarity and confidence to deliver complex projects — more than
-        400 of them every year.
+      <span class="hero-eyebrow">Drew Collaborative Works</span>
+      <h1>Collaboration is in the&nbsp;name</h1>
+      <p class="hero-lead">
+        Supporting innovative design teams and project owners with smart
+        management strategies, design-based cost consulting, and construction
+        management across the Pacific Northwest.
       </p>
       <div class="hero-cta">
-        <a href="/services" class="btn btn-primary">Our services</a>
-        <a href="/projects" class="btn btn-ghost on-dark">See our work</a>
+        <a href="/services" class="btn btn-primary btn-lg">Explore our services</a>
+        <a href="/projects" class="btn btn-outline on-dark btn-lg">See our work</a>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="section-navy stats-band">
+  <!-- ============ STATS ============ -->
+  <section class="section-blue stats-band">
     <div class="container grid grid-4">
       {stats.map((s) => (
         <div class="stat">
@@ -97,32 +83,32 @@ const featured = [
     </div>
   </section>
 
-  <!-- Intro -->
+  <!-- ============ INTRO ============ -->
   <section class="section">
     <div class="container section-head">
       <span class="eyebrow">Who we are</span>
-      <h2>An owner's advocate at every stage of the project.</h2>
+      <h2 class="section-title"><strong>An owner's advocate</strong><br />at every stage.</h2>
       <p class="lead">
-        We sit on the owner's side of the table. That independence — free from
-        the interests of designers or contractors — is what lets us protect
-        budgets, challenge assumptions, and keep projects honest from concept to
-        closeout.
+        DCW is an independent, women-owned cost and construction management firm.
+        We sit on the owner's side of the table — free from the interests of
+        designers or contractors — so we can protect budgets, challenge
+        assumptions, and preserve design intent from concept to closeout.
       </p>
     </div>
   </section>
 
-  <!-- Two pillars -->
-  <section class="section section-sand">
+  <!-- ============ SERVICE PILLARS ============ -->
+  <section class="section section-mist">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">What we do</span>
-        <h2>Two service pillars, one owner-first mission.</h2>
+        <h2 class="section-title underline-accent">Two disciplines, one owner-first&nbsp;mission</h2>
       </div>
       <div class="grid grid-2">
         {pillars.map((p) => (
-          <div class="card card-accent">
+          <div class="card card-accent card-hover">
             <span class="tag">{p.tag}</span>
-            <h3 style="margin-top:0.75rem">{p.title}</h3>
+            <h3 style="margin-top:0.85rem">{p.title}</h3>
             <p>{p.body}</p>
             <ul class="check-list">
               {p.points.map((pt) => <li>{pt}</li>)}
@@ -136,16 +122,12 @@ const featured = [
     </div>
   </section>
 
-  <!-- Process -->
+  <!-- ============ PROCESS ============ -->
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Our process</span>
-        <h2>An owner-centered way of working.</h2>
-        <p class="lead">
-          The same disciplined approach runs through every engagement — so owners
-          always know where their project stands.
-        </p>
+        <span class="eyebrow">How we work</span>
+        <h2 class="section-title">A disciplined, owner-centered&nbsp;approach</h2>
       </div>
       <div class="grid grid-4">
         {process.map((p) => (
@@ -159,111 +141,210 @@ const featured = [
     </div>
   </section>
 
-  <!-- Featured projects -->
-  <section class="section section-navy">
+  <!-- ============ PROJECTS BY MARKET ============ -->
+  <section class="section section-mist">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow" style="color:#e6b98a">Featured work</span>
-        <h2>Landmark projects across the region.</h2>
+      <div class="section-head center">
+        <h2 class="section-title center">Projects by market</h2>
+        <p class="lead mx-auto" style="text-align:center">
+          We structure ourselves around our clients' sectors, so the guidance you
+          get is market-based and specific. DCW works on 400+ projects a year —
+          here's a sampling of where we collaborate.
+        </p>
       </div>
-      <div class="grid grid-4">
-        {featured.map((f) => (
-          <div class="feature-card">
-            <span class="feature-sector">{f.sector}</span>
-            <h3>{f.name}</h3>
-          </div>
+      <!-- Tiles use brand-gradient placeholders. To use real project photos,
+           add style="--img:url('/markets/ports.jpg')" to any .market-tile. -->
+      <div class="grid grid-4 market-grid">
+        {markets.map((m, i) => (
+          <a href="/projects" class="market-tile" style={`--i:${i}`}>
+            <span class="market-label">{m}</span>
+          </a>
         ))}
-      </div>
-      <div class="center mt-2">
-        <a href="/projects" class="btn btn-ghost on-dark">View all projects</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section cta-band">
-    <div class="container center">
-      <h2>Let's talk about your next project.</h2>
+  <!-- ============ EMPLOYEE-OWNED TEASER ============ -->
+  <section class="section section-blue eo-band">
+    <div class="container eo-inner">
+      <div>
+        <span class="eyebrow">Employee-Owned Trust</span>
+        <h2 class="section-title">Everyone here has a stake in your&nbsp;success</h2>
+        <p class="lead" style="color:#dbe6f7">
+          DCW is one of the first Employee Ownership Trusts in Washington — and
+          still a woman-owned small business. Shared ownership means the person
+          on your project is an owner too, invested in getting it right.
+        </p>
+        <a href="/employee-owned" class="btn btn-primary mt-1">How we're owned</a>
+      </div>
+      <div class="eo-quote">
+        <p>&ldquo;DCW delivery of services has been excellent.&rdquo;</p>
+        <cite>Johnathan Hartung<span>SHKS Architects</span></cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section cta-band center">
+    <div class="container">
+      <h2 class="section-title center">Let's collaborate</h2>
       <p class="lead mx-auto" style="text-align:center">
         Whether you're shaping a business case or delivering in the field, we'd
         love to help you get it right.
       </p>
       <div class="mt-2">
-        <a href="/contact" class="btn btn-primary">Get in touch</a>
+        <a href="/contact" class="btn btn-primary btn-lg">Collaborate Today!</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
+  /* ---- Hero ---- */
   .hero {
-    background:
-      linear-gradient(180deg, rgba(22,40,60,0.92), rgba(22,40,60,0.98)),
-      radial-gradient(1200px 500px at 80% -10%, #2f5578 0%, transparent 60%);
+    position: relative;
     color: #fff;
-    padding-block: clamp(3.5rem, 9vw, 7rem);
+    background:
+      linear-gradient(180deg, rgba(15, 30, 55, 0.62), rgba(15, 30, 55, 0.80)),
+      linear-gradient(125deg, var(--blue-900) 0%, var(--blue) 55%, var(--teal) 130%);
+    padding-block: clamp(4.5rem, 12vw, 9rem);
   }
-  .hero-inner { max-width: 46rem; }
-  .hero h1 { color: #fff; margin-bottom: 1rem; }
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1.75rem;
+  .hero-inner { max-width: 60rem; }
+  .hero-eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #cde0ff;
+    margin-bottom: 1rem;
   }
+  .hero h1 {
+    color: #fff;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    line-height: 0.98;
+    margin-bottom: 1.25rem;
+  }
+  .hero-lead {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    color: #e6eefb;
+    max-width: 52ch;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-  .stats-band { padding-block: clamp(2rem, 4vw, 3rem); }
+  /* ---- Stats ---- */
+  .stats-band { padding-block: clamp(2.25rem, 4vw, 3.25rem); }
 
+  /* ---- Check list ---- */
   .check-list {
     list-style: none;
-    margin: 1rem 0 0;
+    margin: 1.25rem 0 0;
     padding: 0;
     display: grid;
-    gap: 0.5rem;
+    gap: 0.55rem;
   }
   .check-list li {
     position: relative;
-    padding-left: 1.6rem;
-    color: var(--slate);
+    padding-left: 1.7rem;
+    color: var(--body);
+    font-size: 0.98rem;
   }
   .check-list li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.55em;
-    width: 0.6rem;
-    height: 0.6rem;
-    background: var(--copper);
+    top: 0.5em;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--green);
     border-radius: 2px;
   }
 
-  .process-step { }
+  /* ---- Process ---- */
   .step-num {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--copper);
+    font-weight: 800;
+    font-size: 2.4rem;
+    color: var(--green);
     display: block;
-    margin-bottom: 0.25rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
   }
-  .process-step h3 { font-size: 1.15rem; }
+  .process-step h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+  .process-step p { color: var(--muted); font-size: 0.97rem; }
 
-  .feature-card {
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.04);
-    transition: background 0.15s ease;
+  /* ---- Market tiles ---- */
+  .market-tile {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    color: #fff;
+    background:
+      linear-gradient(180deg, rgba(15, 44, 88, 0.15), rgba(15, 44, 88, 0.78)),
+      var(--img, linear-gradient(140deg, var(--blue) 0%, var(--blue-900) 60%, var(--teal) 130%));
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .feature-card:hover { background: rgba(255,255,255,0.08); }
-  .feature-sector {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #e6b98a;
+  .market-tile:nth-child(even) {
+    background:
+      linear-gradient(180deg, rgba(15, 44, 88, 0.15), rgba(15, 44, 88, 0.80)),
+      var(--img, linear-gradient(140deg, var(--teal) -20%, var(--blue) 55%, var(--blue-900) 120%));
+    background-size: cover;
+    background-position: center;
+  }
+  .market-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); color: #fff; }
+  .market-label {
+    position: absolute;
+    left: 1rem;
+    bottom: 0.9rem;
+    right: 1rem;
     font-weight: 700;
+    font-size: 1.02rem;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
   }
-  .feature-card h3 { color: #fff; margin: 0.4rem 0 0; font-size: 1.1rem; }
 
-  .cta-band { background: var(--sand); }
+  /* ---- Employee-owned band ---- */
+  .eo-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .eo-quote {
+    border-left: 4px solid var(--green);
+    padding-left: 1.5rem;
+  }
+  .eo-quote p {
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 1rem;
+  }
+  .eo-quote cite {
+    font-style: normal;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+  .eo-quote cite span {
+    display: block;
+    font-weight: 500;
+    color: #a9c7ff;
+    font-size: 0.9rem;
+    margin-top: 0.15rem;
+  }
+  @media (max-width: 780px) {
+    .eo-inner { grid-template-columns: 1fr; }
+  }
+
+  .cta-band { background: var(--mist-2); }
 </style>

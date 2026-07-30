@@ -1,140 +1,153 @@
 ---
 const year = 2026;
-const offices = [
-  {
-    name: 'Seattle (HQ)',
-    lines: ['415 1st Ave N, #9671', 'Seattle, WA 98109'],
-  },
-  {
-    name: 'Seattle — Pioneer Square',
-    lines: ['255 S King St, Ste 800', 'Seattle, WA 98104'],
-  },
-  {
-    name: 'Portland',
-    lines: ['220 NW 8th Ave', 'Portland, OR 97209'],
-  },
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/services', label: 'Services' },
+  { href: '/employee-owned', label: 'Employee-Owned' },
+  { href: '/contact', label: 'Contact' },
 ];
+const { pathname } = Astro.url;
+const isActive = (href) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
 ---
 
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <div class="fb-mark">DCW <span>Cost Management</span></div>
-      <p>
-        Independent, owner-centered cost &amp; construction management.
-        Women-owned (WBE/WOSB), serving the Pacific Northwest since 2014.
-      </p>
-      <div class="footer-contact">
-        <a href="tel:+12062592990">(206) 259-2990</a>
-        <a href="mailto:info@dcwcost.com">info@dcwcost.com</a>
+  <div class="container">
+    <div class="footer-top">
+      <a href="/contact" class="btn btn-outline">Contact Us</a>
+
+      <div class="foot-item">
+        <svg viewBox="0 0 24 24" class="foot-ico" aria-hidden="true">
+          <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+        </svg>
+        <address>
+          415 1st Ave. N, #9671<br />
+          Seattle, Washington 98109, US
+        </address>
       </div>
-    </div>
 
-    <div class="footer-nav">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-offices">
-      <h4>Offices</h4>
-      <div class="offices">
-        {offices.map((o) => (
-          <div class="office">
-            <strong>{o.name}</strong>
-            {o.lines.map((line) => <span>{line}</span>)}
-          </div>
-        ))}
+      <div class="foot-item foot-contact">
+        <a href="tel:+12062592990">
+          <svg viewBox="0 0 24 24" class="foot-ico" aria-hidden="true">
+            <path fill="currentColor" d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1z"/>
+          </svg>
+          +1 (206) 259-2990
+        </a>
+        <a href="mailto:info@dcwcost.com">
+          <svg viewBox="0 0 24 24" class="foot-ico" aria-hidden="true">
+            <path fill="currentColor" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm8 7L4 6.5V8l8 4.5L20 8V6.5L12 11z"/>
+          </svg>
+          info@dcwcost.com
+        </a>
       </div>
-    </div>
-  </div>
 
-  <div class="footer-bar">
-    <div class="container footer-bar-inner">
-      <span>&copy; {year} DCW Cost Management. All rights reserved.</span>
-      <span class="cert">WBE &middot; WOSB Certified</span>
+      <a
+        href="https://www.linkedin.com/company/dcw-cost-management"
+        class="foot-social"
+        aria-label="DCW on LinkedIn"
+        rel="noopener"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/>
+        </svg>
+      </a>
     </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      {navLinks.map((l, i) => (
+        <>
+          {i > 0 && <span class="sep">|</span>}
+          <a href={l.href} class={isActive(l.href) ? 'active' : ''}>{l.label}</a>
+        </>
+      ))}
+    </nav>
+
+    <p class="footer-copy">
+      &copy; {year}, DCW Cost Management. All Rights Reserved.
+      <span class="cert">Woman-Owned (WBE / WOSB) &middot; Employee-Owned Trust</span>
+    </p>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    background: var(--navy);
-    color: #c7d2dd;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
     font-size: 0.95rem;
   }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1.5fr;
-    gap: clamp(1.5rem, 4vw, 3rem);
-    padding-block: clamp(2.5rem, 5vw, 4rem);
-  }
-  @media (max-width: 780px) {
-    .footer-grid { grid-template-columns: 1fr; }
-  }
-  .fb-mark {
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    color: #fff;
-    margin-bottom: 0.75rem;
-  }
-  .fb-mark span { color: #c7d2dd; font-size: 1rem; }
-  .footer-brand p { color: #a9b8c6; max-width: 40ch; }
-  .footer-contact {
+  .footer-top {
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    margin-top: 0.5rem;
-  }
-  .footer-contact a { color: #e6b98a; }
-  .footer-contact a:hover { color: #fff; }
-
-  .site-footer h4 {
-    color: #fff;
-    font-family: var(--font-sans);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-  }
-  .footer-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .footer-nav a { color: #c7d2dd; }
-  .footer-nav a:hover { color: #fff; }
-
-  .offices {
-    display: grid;
-    gap: 1rem;
-  }
-  .office { display: flex; flex-direction: column; }
-  .office strong { color: #fff; font-weight: 600; margin-bottom: 0.15rem; }
-  .office span { color: #a9b8c6; line-height: 1.5; }
-
-  .footer-bar {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    background: var(--navy-800);
-  }
-  .footer-bar-inner {
-    display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    padding-block: 1rem;
-    font-size: 0.85rem;
-    color: #9fb0bf;
+    justify-content: space-between;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    padding-bottom: 2rem;
   }
-  .footer-bar .cert { letter-spacing: 0.06em; }
-  @media (max-width: 520px) {
-    .footer-bar-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+  .foot-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: var(--body);
+  }
+  .foot-ico { width: 20px; height: 20px; color: var(--blue); flex: 0 0 auto; margin-top: 1px; }
+  .foot-item address { font-style: normal; line-height: 1.5; }
+
+  .foot-contact { flex-direction: column; gap: 0.5rem; }
+  .foot-contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--body);
+    font-weight: 500;
+  }
+  .foot-contact a:hover { color: var(--blue); }
+
+  .foot-social {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--blue);
+    border-radius: var(--radius);
+    color: var(--blue);
+    transition: all 0.18s ease;
+  }
+  .foot-social svg { width: 20px; height: 20px; }
+  .foot-social:hover { background: var(--blue); color: #fff; }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .footer-nav a {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+  }
+  .footer-nav a.active { color: var(--green-ink); }
+  .footer-nav a:hover { color: var(--green-ink); }
+  .footer-nav .sep { color: var(--line); }
+
+  .footer-copy {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin: 1.5rem 0 0;
+  }
+  .footer-copy .cert { display: block; margin-top: 0.35rem; letter-spacing: 0.04em; }
+
+  @media (max-width: 780px) {
+    .footer-top { flex-direction: column; align-items: flex-start; }
   }
 </style>

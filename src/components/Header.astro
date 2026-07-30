@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const { pathname } = Astro.url;
 const isActive = (href) =>
   href === '/' ? pathname === '/' : pathname.startsWith(href);
@@ -6,8 +8,9 @@ const isActive = (href) =>
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
   { href: '/projects', label: 'Projects' },
+  { href: '/services', label: 'Services' },
+  { href: '/employee-owned', label: 'Employee-Owned' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
@@ -15,8 +18,7 @@ const links = [
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="brand" aria-label="DCW Cost Management — home">
-      <span class="brand-mark">DCW</span>
-      <span class="brand-text">Cost Management</span>
+      <Logo tone="color" size={54} />
     </a>
 
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
@@ -35,7 +37,7 @@ const links = [
           </li>
         ))}
         <li class="nav-cta">
-          <a href="/contact" class="btn btn-primary">Get in touch</a>
+          <a href="/contact" class="btn btn-outline">Collaborate Today!</a>
         </li>
       </ul>
     </nav>
@@ -47,7 +49,7 @@ const links = [
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.97);
     backdrop-filter: saturate(180%) blur(8px);
     border-bottom: 1px solid var(--line);
   }
@@ -55,73 +57,58 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 72px;
+    gap: 1.5rem;
+    min-height: 80px;
   }
-  .brand {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    color: var(--navy);
-    font-family: var(--font-serif);
-  }
-  .brand:hover { color: var(--navy); }
-  .brand-mark {
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 0.04em;
-    color: var(--copper);
-  }
-  .brand-text {
-    font-size: 1rem;
-    letter-spacing: 0.02em;
-    color: var(--navy);
-  }
+  .brand { display: flex; align-items: center; }
+
   .site-nav ul {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 2.2vw, 2rem);
+    gap: clamp(0.9rem, 1.8vw, 1.75rem);
     margin: 0;
     padding: 0;
   }
-  .site-nav a {
-    font-family: var(--font-sans);
+  .site-nav a:not(.btn) {
     font-weight: 600;
-    font-size: 0.98rem;
-    color: var(--navy);
-    padding-bottom: 2px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--blue);
+    padding-bottom: 4px;
     border-bottom: 2px solid transparent;
+    white-space: nowrap;
   }
-  .site-nav a:hover { color: var(--copper-dark); }
+  .site-nav a:not(.btn):hover { color: var(--green-ink); }
   .site-nav a.active {
-    color: var(--copper-dark);
-    border-bottom-color: var(--copper);
+    color: var(--ink);
+    border-bottom-color: var(--green);
   }
   .nav-cta a { border-bottom: none; }
-  .nav-cta a:hover { color: #fff; }
 
   /* Mobile toggle */
   .nav-toggle, .nav-burger { display: none; }
 
-  @media (max-width: 820px) {
+  @media (max-width: 960px) {
     .nav-burger {
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 5px;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       cursor: pointer;
     }
     .nav-burger span {
       height: 2px;
-      width: 24px;
-      background: var(--navy);
+      width: 26px;
+      background: var(--blue);
       transition: 0.2s ease;
     }
     .site-nav {
       position: absolute;
-      top: 72px;
+      top: 80px;
       left: 0;
       right: 0;
       background: #fff;
@@ -129,7 +116,7 @@ const links = [
       box-shadow: var(--shadow-md);
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.25s ease;
+      transition: max-height 0.28s ease;
     }
     .site-nav ul {
       flex-direction: column;
@@ -137,13 +124,9 @@ const links = [
       gap: 0;
       padding: 0.5rem 0;
     }
-    .site-nav li {
-      padding: 0.35rem var(--gap);
-    }
-    .nav-toggle:checked ~ .site-nav {
-      max-height: 420px;
-    }
-    .nav-cta { padding-top: 0.5rem !important; }
-    .nav-cta a { display: inline-block; }
+    .site-nav li { padding: 0.55rem var(--gap); }
+    .nav-toggle:checked ~ .site-nav { max-height: 520px; }
+    .nav-cta { padding-top: 0.75rem !important; }
+    .nav-cta a { display: inline-flex; }
   }
 </style>

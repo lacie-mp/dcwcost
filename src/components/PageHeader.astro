@@ -1,20 +1,47 @@
 ---
-const { eyebrow, title, lead } = Astro.props;
+/*
+  Branded inner-page hero. Dark overlay over an optional photo.
+  Pass image="/your-photo.jpg" (drop the file in /public) to use a real
+  DCW photo; otherwise a brand blue gradient stands in.
+*/
+const { eyebrow, title, lead, image } = Astro.props;
+const style = image
+  ? `--hero-img:url('${image}')`
+  : undefined;
 ---
 
-<section class="page-header">
+<section class:list={["page-header", { "has-img": image }]} style={style}>
   <div class="container">
-    {eyebrow && <span class="eyebrow" style="color:#e6b98a">{eyebrow}</span>}
+    {eyebrow && <span class="eyebrow ph-eyebrow">{eyebrow}</span>}
     <h1>{title}</h1>
-    {lead && <p class="lead" style="color:#c7d2dd">{lead}</p>}
+    <span class="ph-bar" aria-hidden="true"></span>
+    {lead && <p class="lead ph-lead">{lead}</p>}
   </div>
 </section>
 
 <style>
   .page-header {
-    background: var(--navy);
+    position: relative;
     color: #fff;
-    padding-block: clamp(3rem, 7vw, 5rem);
+    background:
+      linear-gradient(180deg, rgba(15, 44, 88, 0.86), rgba(20, 58, 117, 0.92)),
+      linear-gradient(120deg, var(--blue-900), var(--blue));
+    padding-block: clamp(3.5rem, 9vw, 6rem);
   }
-  .page-header h1 { color: #fff; margin-bottom: 0.5rem; }
+  .page-header.has-img {
+    background:
+      linear-gradient(180deg, rgba(15, 30, 55, 0.72), rgba(15, 30, 55, 0.82)),
+      var(--hero-img) center / cover no-repeat;
+  }
+  .page-header h1 { color: #fff; margin-bottom: 0.75rem; }
+  .ph-eyebrow { color: #a9c7ff; }
+  .ph-bar {
+    display: block;
+    width: 84px;
+    height: 4px;
+    background: var(--green);
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+  }
+  .ph-lead { color: #dbe6f7; max-width: 60ch; }
 </style>

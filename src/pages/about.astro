@@ -2,126 +2,126 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 
-const leadership = [
-  {
-    name: 'Trish Drew',
-    role: 'Founder',
-    creds: 'CPE, LEED AP',
-    bio: 'Founded DCW in 2014 to bring owners truly independent cost expertise. A Certified Professional Estimator and LEED Accredited Professional, Trish set the owner-first philosophy that still defines the firm.',
-  },
-  {
-    name: 'Brian Thompson',
-    role: 'Chief Executive Officer',
-    creds: '',
-    bio: "Leads DCW's strategy and growth across the Pacific Northwest, scaling the firm's practice while keeping the owner at the center of every engagement.",
-  },
-  {
-    name: 'Rachel Quimby',
-    role: 'Associate Director of Systems & Innovation',
-    creds: '',
-    bio: 'Drives the systems, tools, and process innovation that keep DCW’s cost and construction management work consistent, transparent, and repeatable across 400+ projects a year.',
-  },
-  {
-    name: 'Preeti Pustake',
-    role: 'Senior Cost Manager',
-    creds: '',
-    bio: 'Delivers rigorous estimating and cost management on complex projects, giving owners the detailed, defensible cost picture they rely on to make decisions.',
-  },
+const founder = {
+  name: 'Trish Drew',
+  creds: 'CPE, LEED AP',
+  role: 'Founder & Board Chair',
+  bio: [
+    'Trish founded DCW in 2012 in response to a growing need for construction-focused cost planning and truly independent project advisory services. With more than 30 years in the construction industry and over 20 in construction management, she has built a reputation for helping owners, architects, engineers, and contractors navigate complex projects with confidence.',
+    'She built the firm on a simple belief: informed decision-making, collaboration, and proactive cost management are what make projects succeed. Trish led DCW’s transition to an Employee Ownership Trust and continues to shape its future as Board Chair.',
+  ],
+};
+
+// Team roster (matches dcwcost.com). Swap the initials avatars for real
+// headshots by adding style="--img:url('/team/rachel.jpg')" to a .member.
+const team = [
+  { name: 'Brian Thompson', role: 'Chief Executive Officer', note: 'Leading DCW into its next phase of growth.' },
+  { name: 'Rachel Quimby', role: 'Associate Director, Systems & Innovation', note: 'Our longest-serving team member, building the data-driven processes that keep every project efficient.' },
+  { name: 'Preeti Pustake', role: 'Senior Cost Manager', note: 'A background in construction management and architectural design gives her deep insight on every project.' },
+  { name: 'Charu Ghadge', role: 'Senior Cost Manager', note: 'Civil engineering and construction expertise paired with sharp financial acumen.' },
+  { name: 'Matt Thompson', role: 'Senior Cost Manager', note: 'Detailed, defensible estimating across complex public and private work.' },
+  { name: 'Ryan Fouts', role: 'Senior Associate', note: 'Owner-side cost and project support from planning through delivery.' },
+  { name: 'Katya Gamarnik', role: 'Senior Associate', note: 'Rigorous cost analysis that keeps budgets and design intent aligned.' },
+  { name: 'Brittany Gelleri', role: 'Client Relations Manager', note: 'The connection point that keeps our clients informed and supported.' },
 ];
 
 const values = [
-  {
-    title: 'Independent',
-    body: 'We answer only to the owner — never to the designer or contractor. That independence is the foundation of everything we do.',
-  },
-  {
-    title: 'Owner-centered',
-    body: 'Every engagement is scoped around the owner’s goals, constraints, and definition of success — not a one-size-fits-all playbook.',
-  },
-  {
-    title: 'Transparent',
-    body: 'Clear reporting and honest numbers at every milestone mean owners are never surprised by their own project.',
-  },
+  { title: 'Independent', body: 'We answer only to the owner — never the designer or contractor. That independence is the foundation of everything we do.' },
+  { title: 'Collaborative', body: 'Collaboration is in our name. We work alongside your team to align budget, schedule, and design goals from day one.' },
+  { title: 'Transparent', body: 'Honest numbers and clear reporting at every milestone mean owners are never surprised by their own project.' },
 ];
+
+const initials = (n) => n.split(' ').map((p) => p[0]).join('');
 ---
 
-<Layout title="About" description="DCW Cost Management is a women-owned (WBE/WOSB) cost and construction management firm founded in 2014 by Trish Drew, CPE, LEED AP.">
+<Layout
+  title="About"
+  description="DCW Cost Management is an independent, woman-owned and employee-owned cost and construction management firm founded in 2012 by Trish Drew, CPE, LEED AP."
+>
   <PageHeader
     eyebrow="About DCW"
-    title="Independent by design, owner-centered by conviction."
-    lead="Founded in 2014, DCW is a women-owned cost and construction management firm built to give owners an advocate they can trust."
+    title="Learn more about us & meet the team"
+    lead="We are an independent, women-owned third-party consultancy serving owners across the Pacific Northwest — critical thinkers who prioritize your best interests at every step."
   />
 
-  <!-- Story -->
+  <!-- ---- Who we are ---- -->
   <section class="section">
-    <div class="container narrow">
-      <span class="eyebrow">Our story</span>
-      <h2>Built to put owners first.</h2>
-      <p>
-        DCW Cost Management was founded in 2014 by <strong>Trish Drew</strong> —
-        a Certified Professional Estimator (CPE) and LEED Accredited Professional
-        (LEED AP) — on a simple conviction: owners deserve cost and construction
-        expertise that works entirely for them.
-      </p>
-      <p>
-        More than a decade later, that conviction still guides the firm. From
-        offices in Seattle and Portland, our team supports owners on more than
-        400 projects every year, spanning transit, civic, government, and
-        marine work across the Pacific Northwest.
-      </p>
-      <p>
-        DCW is proud to be a <strong>women-owned business</strong>, certified as
-        both a Women’s Business Enterprise (WBE) and a Woman-Owned Small
-        Business (WOSB).
-      </p>
-
-      <div class="badges">
-        <span class="badge">Women-Owned</span>
-        <span class="badge">WBE Certified</span>
-        <span class="badge">WOSB Certified</span>
-        <span class="badge">Founded 2014</span>
+    <div class="container about-intro">
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h2 class="section-title"><strong>Owner-centered,</strong><br />by design.</h2>
+        <p>
+          We are an independent women-owned third-party consultancy offering a
+          wide array of cost and project management services from offices in
+          Seattle, Washington and Portland, Oregon. Our clients include
+          architects, government agencies, municipalities, non-profits, and
+          commercial developers.
+        </p>
+        <p>
+          We deliver owner-centered construction management and market-based
+          independent cost consultancy, geared toward preserving design intent
+          and owner requirements. From planning through occupancy, we prioritize
+          your best interests at every step of the process.
+        </p>
+        <div class="badges">
+          <span class="badge">Woman-Owned</span>
+          <span class="badge">WBE Certified</span>
+          <span class="badge">WOSB Certified</span>
+          <span class="badge">Employee-Owned Trust</span>
+        </div>
+      </div>
+      <!-- Team photo slot: drop /public/team-group.jpg and remove the class. -->
+      <div class="about-photo" aria-hidden="true">
+        <span>Team photo</span>
       </div>
     </div>
   </section>
 
-  <!-- Values -->
-  <section class="section section-sand">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">What guides us</span>
-        <h2>Principles that hold across every project.</h2>
+  <!-- ---- Founder ---- -->
+  <section class="section section-blue">
+    <div class="container founder">
+      <div class="founder-photo" aria-hidden="true">{initials(founder.name)}</div>
+      <div class="founder-body">
+        <span class="eyebrow">Founder</span>
+        <h2>{founder.name}<span class="creds">, {founder.creds}</span></h2>
+        <p class="founder-role">{founder.role}</p>
+        {founder.bio.map((para) => <p>{para}</p>)}
       </div>
-      <div class="grid grid-3">
-        {values.map((v) => (
-          <div class="card card-accent">
-            <h3>{v.title}</h3>
-            <p>{v.body}</p>
+    </div>
+  </section>
+
+  <!-- ---- Team ---- -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">The team</span>
+        <h2 class="section-title center">Critical thinkers & collaborators</h2>
+      </div>
+      <div class="grid grid-4 team-grid">
+        {team.map((m) => (
+          <div class="member">
+            <div class="member-photo" aria-hidden="true">{initials(m.name)}</div>
+            <h3>{m.name}</h3>
+            <p class="member-role">{m.role}</p>
+            <p class="member-note">{m.note}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Leadership -->
-  <section class="section">
+  <!-- ---- Values ---- -->
+  <section class="section section-mist">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Leadership</span>
-        <h2>The team behind the work.</h2>
+        <span class="eyebrow">What guides us</span>
+        <h2 class="section-title underline-accent">Principles that hold across every&nbsp;project</h2>
       </div>
-      <div class="grid grid-2">
-        {leadership.map((p) => (
-          <div class="leader card">
-            <div class="leader-avatar" aria-hidden="true">
-              {p.name.split(' ').map((n) => n[0]).join('')}
-            </div>
-            <div class="leader-body">
-              <h3>{p.name}</h3>
-              <p class="leader-role">
-                {p.role}{p.creds ? <span class="creds"> &middot; {p.creds}</span> : null}
-              </p>
-              <p>{p.bio}</p>
-            </div>
+      <div class="grid grid-3">
+        {values.map((v) => (
+          <div class="card card-accent card-hover">
+            <h3>{v.title}</h3>
+            <p>{v.body}</p>
           </div>
         ))}
       </div>
@@ -130,50 +130,89 @@ const values = [
 </Layout>
 
 <style>
-  .narrow { max-width: 70ch; }
-  .badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 1.75rem;
+  .about-intro {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
   }
+  @media (max-width: 820px) { .about-intro { grid-template-columns: 1fr; } }
+
+  .about-photo {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(140deg, var(--mist-2), var(--blue) 320%);
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; }
   .badge {
-    background: var(--navy);
+    background: var(--blue);
     color: #fff;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    padding: 0.4rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.85rem;
     border-radius: 999px;
   }
 
-  .leader {
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
+  /* Founder */
+  .founder {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
   }
-  .leader-avatar {
-    flex: 0 0 auto;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: #e6b98a;
+  .founder-photo {
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.12);
     display: grid;
     place-items: center;
-    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: 3rem;
+    color: #fff;
+  }
+  .founder-body h2 { color: #fff; margin-bottom: 0.15rem; }
+  .founder-body .creds { font-weight: 400; color: #a9c7ff; }
+  .founder-role {
+    color: var(--green);
     font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
   }
-  .leader h3 { margin: 0 0 0.15rem; }
-  .leader-role {
-    color: var(--copper-dark);
-    font-weight: 600;
-    margin-bottom: 0.6rem;
+  .founder-body p { color: #dbe6f7; }
+  @media (max-width: 620px) { .founder { grid-template-columns: 1fr; } .founder-photo { max-width: 200px; } }
+
+  /* Team */
+  .member-photo {
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(140deg, var(--blue), var(--blue-900));
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 0.9rem;
   }
-  .leader-role .creds { color: var(--slate-light); font-weight: 500; }
-  @media (max-width: 480px) {
-    .leader { flex-direction: column; }
+  .member h3 { font-size: 1.1rem; margin-bottom: 0.1rem; }
+  .member-role {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
   }
+  .member-note { color: var(--muted); font-size: 0.92rem; }
 </style>

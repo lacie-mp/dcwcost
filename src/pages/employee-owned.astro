@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const forClients = [
+  { title: 'Aligned incentives', body: 'The person on your project is an owner. Their stake in DCW is tied to doing right by you — not to hitting someone else’s quarterly target.' },
+  { title: 'Long-term continuity', body: 'The Trust secures our independence for the long haul, so the team and relationships you rely on stay in place project after project.' },
+  { title: 'Independence, protected', body: 'Ownership can’t be sold out from under us. That keeps our advice market-based and genuinely on the owner’s side.' },
+];
+
+const forTeam = [
+  { title: 'A real stake', body: 'Every employee shares in the success they help create — no buy-in required. When DCW thrives, so do you.' },
+  { title: 'A voice in the future', body: 'The Trust’s board includes representatives from cost, project management, marketing, and innovation. Our direction is shaped by the people doing the work.' },
+  { title: 'Room to grow', body: 'From senior associate to senior cost manager and beyond, we invest in the careers of the people who make DCW what it is.' },
+];
+---
+
+<Layout
+  title="Employee-Owned"
+  description="DCW is one of the first Employee Ownership Trusts in Washington State — and still a woman-owned small business. Shared ownership means every team member has a stake in your success."
+>
+  <PageHeader
+    eyebrow="Employee Ownership Trust"
+    title="DCW is employee-owned"
+    lead="We’ve helped pioneer a growing movement of equitable business succession — and it makes us a better partner and a better place to work."
+  />
+
+  <!-- ---- Story ---- -->
+  <section class="section">
+    <div class="container narrow">
+      <span class="eyebrow">What changed, and what didn't</span>
+      <h2 class="section-title"><strong>Shared success</strong><br />is the best path forward.</h2>
+      <p>
+        DCW has officially transitioned to an <span class="hl">Employee Ownership
+        Trust (EOT)</span> — a milestone that secures our long-term independence
+        and reinforces our commitment to both our clients and our team. As one of
+        the first Employee Ownership Trusts in Washington State, and among roughly
+        60 across the U.S., DCW is helping pave the way for a growing movement in
+        equitable business succession.
+      </p>
+      <p>
+        Founder and Managing Director <strong>Trish Drew</strong> led the
+        transition with a vision to maintain continuity, honor the team’s
+        contributions, and build a structure that empowers employees to shape
+        DCW’s future. Trish continues as Chair of the EOT Board of Directors,
+        alongside representatives from our cost, project management, marketing,
+        and innovation teams.
+      </p>
+      <p>
+        Importantly, DCW remains a <span class="hl">woman-owned small business</span>
+        — a core part of our identity. Women represent more than half of our
+        management and operations, and our ownership model preserves our WBE and
+        WOSB certifications in both Washington and Oregon. Our mission hasn’t
+        changed: accurate, strategic, thoughtful cost estimating and construction
+        management — now delivered by a team that’s more invested than ever.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---- For clients ---- -->
+  <section class="section section-mist">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">For our clients</span>
+        <h2 class="section-title underline-accent">Ownership you can feel in the&nbsp;work</h2>
+      </div>
+      <div class="grid grid-3">
+        {forClients.map((c) => (
+          <div class="card card-accent card-hover">
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- For the team ---- -->
+  <section class="section section-blue">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">For our team</span>
+        <h2 class="section-title">Why people build careers&nbsp;here</h2>
+      </div>
+      <div class="grid grid-3">
+        {forTeam.map((c) => (
+          <div class="eo-card">
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Careers CTA ---- -->
+  <section class="section center">
+    <div class="container">
+      <h2 class="section-title center">Want a stake in work that matters?</h2>
+      <p class="lead mx-auto" style="text-align:center">
+        We’re always glad to meet critical thinkers and collaborators who want
+        to help owners build the Pacific Northwest. If that sounds like you, say
+        hello.
+      </p>
+      <div class="mt-2">
+        <a href="/contact" class="btn btn-primary btn-lg">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .narrow { max-width: 72ch; }
+  .eo-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-top: 4px solid var(--green);
+  }
+  .eo-card h3 { color: #fff; }
+  .eo-card p { color: #cfe0f7; margin: 0; }
+</style>

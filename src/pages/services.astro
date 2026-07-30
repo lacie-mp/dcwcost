@@ -3,122 +3,199 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 
 const costServices = [
-  {
-    title: 'Third-party estimating',
-    body: 'Independent estimates that give owners a defensible, unbiased view of cost — separate from the design or construction team.',
-  },
-  {
-    title: 'Design-based cost management',
-    body: 'Cost intelligence embedded through every design phase, so budgets and design decisions stay aligned before they become expensive to change.',
-  },
-  {
-    title: 'Business-case cost planning',
-    body: 'Early-stage planning that turns a concept into a fundable business case, with the cost basis owners need to make the go/no-go call.',
-  },
-  {
-    title: 'Cost review & reporting',
-    body: 'Ongoing review and transparent reporting that keep every stakeholder aligned on where the budget stands at each milestone.',
-  },
-  {
-    title: 'Reconciliation',
-    body: 'Structured reconciliation of estimates between parties and phases — resolving differences before they turn into disputes.',
-  },
-  {
-    title: 'Feasibility, LCCA & O&M',
-    body: 'Feasibility studies, life-cycle cost analysis, and operations & maintenance cost planning that look past first cost to total cost of ownership.',
-  },
+  { title: 'Third-Party Cost Estimation (ICE)', body: 'Budget and estimate validation using independent third-party cost estimating — accounting for soft costs, relocation, and other owner expenditures.' },
+  { title: 'Design-Based Cost Management', body: 'Cost intelligence embedded through every design phase, so budgets and design decisions stay aligned before changes get expensive.' },
+  { title: 'Business Case Cost Planning', body: 'Early-stage planning that turns a concept into a fundable business case owners can take forward with confidence.' },
+  { title: 'Cost Review & Reporting', body: 'Ongoing review and transparent reporting that keep every stakeholder aligned on where the budget stands.' },
+  { title: 'Master Planning & Pre-Design', body: 'Cost guidance at the earliest stages, shaping scope and program against a realistic, market-based budget.' },
+  { title: 'Reconciliation Management', body: 'Structured reconciliation between parties and phases — resolving differences before they become disputes.' },
 ];
 
 const cmServices = [
-  {
-    title: 'Program, project & construction management',
-    body: 'End-to-end management across the program, the individual project, and the construction phase — coordinated under one owner-focused team.',
-  },
-  {
-    title: "Owner's representation",
-    body: "We represent the owner's interests at the table, translating technical detail into clear decisions and protecting your goals throughout delivery.",
-  },
-  {
-    title: 'Change-order review',
-    body: 'Rigorous, independent review of change orders to confirm scope, pricing, and justification before they reach the owner for approval.',
-  },
-  {
-    title: 'Constructability coordination',
-    body: 'Early constructability input and coordination that surface conflicts on paper — not in the field — reducing rework, delay, and cost.',
-  },
+  { title: 'Construction Management', body: 'Owner-side management that keeps quality, schedule, and budget aligned with your goals through the build.' },
+  { title: 'Project Management', body: 'Coordinated leadership across teams and phases, translating technical detail into clear owner decisions.' },
+  { title: 'Program Management', body: 'A steady hand across portfolios of work, standardizing process and controls program-wide.' },
+  { title: "Owner's Representation", body: "We represent the owner's interests at the table and protect your goals throughout delivery." },
+  { title: 'Alternative Delivery Consulting', body: 'Guidance on progressive design-build, GC/CM, and other delivery models to match method to project.' },
+  { title: 'Staff Augmentation', body: 'Experienced cost and project professionals who plug into your team exactly when you need them.' },
+];
+
+const markets = [
+  'Government', 'Healthcare', 'Education', 'Parks',
+  'Transportation', 'Community & Arts', 'Utilities', 'Zoos & Animal Welfare',
 ];
 ---
 
-<Layout title="Services" description="DCW Cost Management services across two pillars: independent cost management and owner-side construction management.">
+<Layout
+  title="Services"
+  description="DCW Cost Management delivers independent cost management and owner-side construction management — third-party estimating, cost planning, owner's representation, and more."
+>
   <PageHeader
     eyebrow="Services"
-    title="Two pillars of owner-side expertise."
-    lead="From the earliest business case to final reconciliation, we bring independent cost intelligence and hands-on construction management to every owner we serve."
+    title="Expertise built for your project"
+    lead="Our collaborative team addresses your project with agility and flexibility, and our tailored services mean we can support you no matter the scope."
   />
 
-  <!-- Cost Management -->
-  <section class="section" id="cost-management">
-    <div class="container">
-      <div class="service-intro">
-        <span class="tag">Pillar One</span>
-        <h2>Cost Management</h2>
+  <!-- ---- Intro + testimonial ---- -->
+  <section class="section">
+    <div class="container svc-intro">
+      <div>
+        <h2 class="section-title"><strong>Personalized</strong><br />cost &amp; construction management</h2>
         <p class="lead">
-          Independent cost expertise that gives owners numbers they can trust —
-          and defend — at every phase of a project.
+          We're proud of a strong reputation for service — with clients who
+          regularly recommend us and our work. Whether you need independent cost
+          intelligence, owner-side construction management, or both, we tailor
+          our support to your project.
         </p>
       </div>
-      <div class="grid grid-3">
-        {costServices.map((s) => (
-          <div class="card card-accent">
-            <h3>{s.title}</h3>
-            <p>{s.body}</p>
+      <blockquote class="svc-quote">
+        <p>&ldquo;DCW delivery of services has been excellent.&rdquo;</p>
+        <cite>Johnathan Hartung<span>SHKS Architects</span></cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ---- Service columns ---- -->
+  <section class="section section-blue">
+    <div class="container">
+      <div class="grid grid-2 svc-columns">
+        <div>
+          <h2 class="svc-col-title">Cost Management Services</h2>
+          <div class="svc-list">
+            {costServices.map((s) => (
+              <details class="svc-item">
+                <summary>{s.title}</summary>
+                <p>{s.body}</p>
+              </details>
+            ))}
           </div>
-        ))}
+        </div>
+        <div>
+          <h2 class="svc-col-title">Construction Management Services</h2>
+          <div class="svc-list">
+            {cmServices.map((s) => (
+              <details class="svc-item">
+                <summary>{s.title}</summary>
+                <p>{s.body}</p>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Construction Management -->
-  <section class="section section-sand" id="construction-management">
+  <!-- ---- Service markets ---- -->
+  <section class="section">
     <div class="container">
-      <div class="service-intro">
-        <span class="tag">Pillar Two</span>
-        <h2>Construction Management</h2>
-        <p class="lead">
-          Owner-side leadership that keeps schedule, budget, and quality aligned
-          with your goals from program planning through closeout.
+      <div class="section-head center">
+        <h2 class="section-title center">Service markets</h2>
+        <p class="lead mx-auto" style="text-align:center">
+          We structure ourselves around our clients' sectors to provide
+          industry-relevant, market-based advice — a level of understanding that
+          inspires cost confidence and sets us apart.
         </p>
       </div>
-      <div class="grid grid-2">
-        {cmServices.map((s) => (
-          <div class="card card-accent">
-            <h3>{s.title}</h3>
-            <p>{s.body}</p>
-          </div>
+      <ul class="market-check grid grid-4">
+        {markets.map((m) => (
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+            {m}
+          </li>
         ))}
+      </ul>
+      <div class="center mt-2">
+        <a href="/projects" class="btn btn-outline">Browse projects by market</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-navy">
-    <div class="container center">
-      <h2>Not sure which service you need?</h2>
-      <p class="lead mx-auto" style="text-align:center;color:#c7d2dd">
+  <!-- ---- CTA ---- -->
+  <section class="section section-mist center">
+    <div class="container">
+      <h2 class="section-title center">Not sure which service you need?</h2>
+      <p class="lead mx-auto" style="text-align:center">
         Tell us about your project and we'll help you scope the right support —
         cost, construction management, or both.
       </p>
       <div class="mt-2">
-        <a href="/contact" class="btn btn-primary">Start a conversation</a>
+        <a href="/contact" class="btn btn-primary btn-lg">Start a conversation</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .service-intro {
-    max-width: 60ch;
-    margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+  .svc-intro {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
   }
-  .service-intro h2 { margin: 0.75rem 0 0.5rem; }
+  @media (max-width: 820px) { .svc-intro { grid-template-columns: 1fr; } }
+  .svc-quote {
+    margin: 0;
+    border-left: 4px solid var(--green);
+    padding-left: 1.5rem;
+  }
+  .svc-quote p {
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 0.85rem;
+  }
+  .svc-quote cite { font-style: normal; font-weight: 700; color: var(--blue); }
+  .svc-quote cite span { display: block; font-weight: 500; color: var(--muted); font-size: 0.88rem; margin-top: 0.15rem; }
+
+  .svc-col-title {
+    color: #fff;
+    padding-bottom: 0.85rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 4px solid var(--green);
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  }
+  .svc-list { display: grid; gap: 0.75rem; }
+  .svc-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+  }
+  .svc-item summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .svc-item summary::-webkit-details-marker { display: none; }
+  .svc-item summary::after {
+    content: "+";
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--green);
+  }
+  .svc-item[open] summary::after { content: "\2212"; }
+  .svc-item p { margin: 0.75rem 0 0; color: #cfe0f7; font-size: 0.95rem; }
+
+  .market-check {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .market-check li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    color: var(--ink);
+    padding: 0.6rem 0;
+  }
+  .market-check svg { width: 22px; height: 22px; color: var(--green); flex: 0 0 auto; }
 </style>
