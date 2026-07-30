@@ -6,23 +6,22 @@ const founder = {
   name: 'Trish Drew',
   creds: 'CPE, LEED AP',
   role: 'Founder & Board Chair',
+  img: '/Trish-Headshot-High-Resolution-1-1024x683-square-34eaeb1b40ddf1d2aa0a4a9061ff3daa-d0qt9g4pful2.jpg',
   bio: [
     'Trish founded DCW in 2012 in response to a growing need for construction-focused cost planning and truly independent project advisory services. With more than 30 years in the construction industry and over 20 in construction management, she has built a reputation for helping owners, architects, engineers, and contractors navigate complex projects with confidence.',
     'She built the firm on a simple belief: informed decision-making, collaboration, and proactive cost management are what make projects succeed. Trish led DCW’s transition to an Employee Ownership Trust and continues to shape its future as Board Chair.',
   ],
 };
 
-// Team roster (matches dcwcost.com). Swap the initials avatars for real
-// headshots by adding style="--img:url('/team/rachel.jpg')" to a .member.
 const team = [
-  { name: 'Brian Thompson', role: 'Chief Executive Officer', note: 'Leading DCW into its next phase of growth.' },
-  { name: 'Rachel Quimby', role: 'Associate Director, Systems & Innovation', note: 'Our longest-serving team member, building the data-driven processes that keep every project efficient.' },
-  { name: 'Preeti Pustake', role: 'Senior Cost Manager', note: 'A background in construction management and architectural design gives her deep insight on every project.' },
-  { name: 'Charu Ghadge', role: 'Senior Cost Manager', note: 'Civil engineering and construction expertise paired with sharp financial acumen.' },
-  { name: 'Matt Thompson', role: 'Senior Cost Manager', note: 'Detailed, defensible estimating across complex public and private work.' },
-  { name: 'Ryan Fouts', role: 'Senior Associate', note: 'Owner-side cost and project support from planning through delivery.' },
-  { name: 'Katya Gamarnik', role: 'Senior Associate', note: 'Rigorous cost analysis that keeps budgets and design intent aligned.' },
-  { name: 'Brittany Gelleri', role: 'Client Relations Manager', note: 'The connection point that keeps our clients informed and supported.' },
+  { name: 'Brian Thompson', role: 'Chief Executive Officer', img: '/Brian-Thompson-Headshot-1024x1024-square-77ac59ebe6bdd60827c1b026315e2262-0rjw5kvmza26.jpg', note: 'Leading DCW into its next phase of growth.' },
+  { name: 'Rachel Quimby', role: 'Associate Director, Systems & Innovation', img: '/Rachel-2-Web-Res-square-1024x1024-square-228102f8509bbbf222b246fba59cc06b-63bdweuo4s9i.jpg', note: 'Our longest-serving team member, building the data-driven processes that keep every project efficient.' },
+  { name: 'Preeti Pustake', role: 'Senior Cost Manager', img: '/preeti-pustake-web-1024x1024-square-7c8e193052ea612d2b81bba930726ddc-d4wxh5r9msgu.jpg', note: 'A background in construction management and architectural design gives her deep insight on every project.' },
+  { name: 'Charu Ghadge', role: 'Senior Cost Manager', img: '/Charu-square-headshot-square-221b8d515778edb4fbeb56a23988ab9f-1748ptbwneqc.png', note: 'Civil engineering and construction expertise paired with sharp financial acumen.' },
+  { name: 'Matt Thompson', role: 'Senior Cost Manager', img: '/Matt-Headshot-square-2d148b755c26c11afa4b6b0960bdc5b9-nf60wp9s3vtj.jpg', note: 'Detailed, defensible estimating across complex public and private work.' },
+  { name: 'Ryan Fouts', role: 'Senior Associate', img: '/Ryan-3-High-Res-1024x731-square-1b707c6a187a966aecdfa6ad0cfb6184-1g3iaqow9rvb.jpg', note: 'Owner-side cost and project support from planning through delivery.' },
+  { name: 'Katya Gamarnik', role: 'Senior Associate', img: '/Katya-1000x667-size-square-b5e621f9fd69bda2be46a233ae07cbde-cymxklq7tv5z.png', note: 'Rigorous cost analysis that keeps budgets and design intent aligned.' },
+  { name: 'Brittany Gelleri', role: 'Client Relations Manager', img: '/Brittany-Landscape-Headshot-2026-1024x683-square-8443a2492b07b7292f81379489a354f8-unqho86ejx15.jpg', note: 'The connection point that keeps our clients informed and supported.' },
 ];
 
 const values = [
@@ -30,8 +29,6 @@ const values = [
   { title: 'Collaborative', body: 'Collaboration is in our name. We work alongside your team to align budget, schedule, and design goals from day one.' },
   { title: 'Transparent', body: 'Honest numbers and clear reporting at every milestone mean owners are never surprised by their own project.' },
 ];
-
-const initials = (n) => n.split(' ').map((p) => p[0]).join('');
 ---
 
 <Layout
@@ -70,9 +67,8 @@ const initials = (n) => n.split(' ').map((p) => p[0]).join('');
           <span class="badge">Employee-Owned Trust</span>
         </div>
       </div>
-      <!-- Team photo slot: drop /public/team-group.jpg and remove the class. -->
-      <div class="about-photo" aria-hidden="true">
-        <span>Team photo</span>
+      <div class="about-photo">
+        <img src="/DCW-2-scaled.jpg" alt="The DCW team collaborating" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -80,7 +76,9 @@ const initials = (n) => n.split(' ').map((p) => p[0]).join('');
   <!-- ---- Founder ---- -->
   <section class="section section-blue">
     <div class="container founder">
-      <div class="founder-photo" aria-hidden="true">{initials(founder.name)}</div>
+      <div class="founder-photo">
+        <img src={founder.img} alt={founder.name} loading="lazy" decoding="async" />
+      </div>
       <div class="founder-body">
         <span class="eyebrow">Founder</span>
         <h2>{founder.name}<span class="creds">, {founder.creds}</span></h2>
@@ -100,7 +98,9 @@ const initials = (n) => n.split(' ').map((p) => p[0]).join('');
       <div class="grid grid-4 team-grid">
         {team.map((m) => (
           <div class="member">
-            <div class="member-photo" aria-hidden="true">{initials(m.name)}</div>
+            <div class="member-photo">
+              <img src={m.img} alt={m.name} loading="lazy" decoding="async" />
+            </div>
             <h3>{m.name}</h3>
             <p class="member-role">{m.role}</p>
             <p class="member-note">{m.note}</p>
@@ -141,15 +141,10 @@ const initials = (n) => n.split(' ').map((p) => p[0]).join('');
   .about-photo {
     aspect-ratio: 4 / 3;
     border-radius: var(--radius-lg);
-    background: linear-gradient(140deg, var(--mist-2), var(--blue) 320%);
-    border: 1px solid var(--line);
-    display: grid;
-    place-items: center;
-    color: var(--muted);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
   }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; }
 
   .badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; }
   .badge {
@@ -173,13 +168,10 @@ const initials = (n) => n.split(' ').map((p) => p[0]).join('');
   .founder-photo {
     aspect-ratio: 1;
     border-radius: var(--radius-lg);
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.12);
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    font-size: 3rem;
-    color: #fff;
   }
+  .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
   .founder-body h2 { color: #fff; margin-bottom: 0.15rem; }
   .founder-body .creds { font-weight: 400; color: #a9c7ff; }
   .founder-role {
@@ -191,20 +183,17 @@ const initials = (n) => n.split(' ').map((p) => p[0]).join('');
     margin-bottom: 1.25rem;
   }
   .founder-body p { color: #dbe6f7; }
-  @media (max-width: 620px) { .founder { grid-template-columns: 1fr; } .founder-photo { max-width: 200px; } }
+  @media (max-width: 620px) { .founder { grid-template-columns: 1fr; } .founder-photo { max-width: 220px; } }
 
   /* Team */
   .member-photo {
     aspect-ratio: 1;
     border-radius: var(--radius-lg);
-    background: linear-gradient(140deg, var(--blue), var(--blue-900));
-    display: grid;
-    place-items: center;
-    color: #fff;
-    font-weight: 800;
-    font-size: 2rem;
+    overflow: hidden;
     margin-bottom: 0.9rem;
+    background: linear-gradient(140deg, var(--blue), var(--blue-900));
   }
+  .member-photo img { width: 100%; height: 100%; object-fit: cover; }
   .member h3 { font-size: 1.1rem; margin-bottom: 0.1rem; }
   .member-role {
     color: var(--blue);

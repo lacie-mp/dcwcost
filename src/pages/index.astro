@@ -46,6 +46,17 @@ const markets = [
   'Government', 'Healthcare', 'Higher Education', 'K-12',
   'Parks', 'Ports', 'Transportation & Utilities', 'Zoos & Animal Welfare',
 ];
+
+// Client / design-partner logos (white marks, shown on a dark section).
+const clients = [
+  '1.png', '3.png', '4.png', '6.png', '7.png', '8.png', '9.png', '10.png',
+  '11.png', '11-1.png', '12.png', '13.png', '14.png', '15.png', '16.png',
+  '17.png', '18.png', '19.png', '20.png', '21.png', '22.png', '23.png',
+  '24.png', '25.png', '26.png', '29.png', '2.ink_Studio-1.png',
+  'AECOM.png', 'NELSON-1.png', 'MWA-1.png', 'Graham-Baba.png', 'Carleton-Hart.webp',
+  'cardinal.png', 'ggn.png', 'hacker.png', 'opsis-1.png', 'place.png',
+  'sera-1.png', 'shks.png', 'snohetta.png', 'szabo.png', 'Untitled-2.png',
+];
 ---
 
 <Layout
@@ -164,6 +175,23 @@ const markets = [
     </div>
   </section>
 
+  <!-- ============ CLIENTS / DESIGN PARTNERS ============ -->
+  <section class="section clients-band">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow" style="color:#a9c7ff">Trusted collaborators</span>
+        <h2 class="section-title center" style="color:#fff">We work with the region's leading design&nbsp;teams</h2>
+      </div>
+      <div class="client-grid">
+        {clients.map((c) => (
+          <div class="client-logo">
+            <img src={`/${c}`} alt="" decoding="async" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ============ EMPLOYEE-OWNED TEASER ============ -->
   <section class="section section-blue eo-band">
     <div class="container eo-inner">
@@ -205,7 +233,8 @@ const markets = [
     position: relative;
     color: #fff;
     background:
-      linear-gradient(180deg, rgba(15, 30, 55, 0.62), rgba(15, 30, 55, 0.80)),
+      linear-gradient(180deg, rgba(13, 27, 50, 0.66), rgba(11, 24, 46, 0.86)),
+      url('/DCW-2-scaled.jpg') center / cover no-repeat,
       linear-gradient(125deg, var(--blue-900) 0%, var(--blue) 55%, var(--teal) 130%);
     padding-block: clamp(4.5rem, 12vw, 9rem);
   }
@@ -347,4 +376,29 @@ const markets = [
   }
 
   .cta-band { background: var(--mist-2); }
+
+  /* ---- Client / partner logo wall ----
+     All supplied marks are white-on-transparent, so they sit on a dark
+     panel with no color filter. */
+  .clients-band { background: var(--blue-900); }
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2rem);
+    align-items: center;
+  }
+  .client-logo {
+    display: grid;
+    place-items: center;
+    height: 60px;
+  }
+  .client-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.18s ease;
+  }
+  .client-logo:hover img { opacity: 1; }
 </style>

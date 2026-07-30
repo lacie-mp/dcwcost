@@ -1,55 +1,23 @@
 ---
 /*
-  DCW brand mark — recreated to match dcwcost.com:
-  the "DCW" wordmark set inside a broken circular swoosh.
-  tone="color" -> blue letters + teal→green arc (use on light backgrounds)
-  tone="light" -> all white (use on photos / blue / dark backgrounds)
+  DCW brand mark — real logo files.
+  tone="color" -> full-color logo (blue DCW + green/blue swoosh); use on light backgrounds
+  tone="light" -> white logo; use on dark / photo / blue backgrounds
+  `size` is the rendered height in px (width scales automatically).
 */
-const { tone = 'color', size = 52, class: className = '' } = Astro.props;
-const gid = `dcw-arc-${tone}`;
-const ringStroke = tone === 'light' ? '#ffffff' : `url(#${gid})`;
-const textFill = tone === 'light' ? '#ffffff' : 'var(--blue)';
+const { tone = 'color', size = 46, class: className = '' } = Astro.props;
+const src = tone === 'light' ? '/Picture1.png' : '/DCW-Square-Logo-1.png';
 ---
 
-<svg
-  class={`dcw-logo ${className}`}
-  width={size}
+<img
+  src={src}
+  alt="DCW Cost Management"
   height={size}
-  viewBox="0 0 120 120"
-  role="img"
-  aria-label="DCW"
-  xmlns="http://www.w3.org/2000/svg"
->
-  {tone !== 'light' && (
-    <defs>
-      <linearGradient id={gid} x1="0%" y1="10%" x2="100%" y2="90%">
-        <stop offset="0%" stop-color="var(--teal)" />
-        <stop offset="100%" stop-color="var(--green)" />
-      </linearGradient>
-    </defs>
-  )}
-  <!-- broken swoosh ring (two gaps set diagonally) -->
-  <circle
-    cx="60" cy="60" r="50"
-    fill="none"
-    stroke={ringStroke}
-    stroke-width="7"
-    stroke-linecap="round"
-    stroke-dasharray="126 31 126 31"
-    transform="rotate(-42 60 60)"
-  />
-  <text
-    x="60" y="60"
-    text-anchor="middle"
-    dominant-baseline="central"
-    font-family="var(--font)"
-    font-weight="800"
-    font-size="30"
-    letter-spacing="-1"
-    fill={textFill}
-  >DCW</text>
-</svg>
+  class={`dcw-logo ${className}`}
+  style={`height:${size}px`}
+  decoding="async"
+/>
 
 <style>
-  .dcw-logo { display: block; }
+  .dcw-logo { display: block; width: auto; }
 </style>
