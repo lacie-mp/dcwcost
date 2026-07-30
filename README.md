@@ -2,7 +2,7 @@
 
 Marketing website for **DCW Cost Management** (Drew Collaborative Works) — an
 independent, owner-centered cost and construction management firm serving the
-Pacific Northwest since 2013. Women-owned (WBE/WOSB) and employee-owned (EOT).
+Pacific Northwest since 2012. Women-owned (WBE/WOSB) and employee-owned (EOT).
 
 Built with [Astro](https://astro.build) and deployed on
 [Netlify](https://www.netlify.com).
@@ -32,10 +32,11 @@ touching page markup:
 - `projects.js` — project case studies
 - `insights.js` — Insights articles
 
-> **⚠️ Verify before launch:** the team roster in `src/pages/about.astro`, the
-> testimonials, and the founding year (set to 2013) are drawn from public
-> record and need confirmation against DCW's own records. Project case studies
-> in `src/data/projects.js` should likewise be confirmed and expanded.
+> **⚠️ Verify before launch:** the team roster in `src/pages/about.astro` and
+> the testimonials are drawn from public record and need confirmation against
+> DCW's own records. (Founding year is confirmed: DCW was founded in 2012 and
+> began delivering project work in 2013.) Project case studies in
+> `src/data/projects.js` should likewise be confirmed and expanded.
 
 ## Local development
 
