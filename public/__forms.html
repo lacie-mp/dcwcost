@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form detection</title>
+  </head>
+  <body>
+    <!--
+      Static form definition so Netlify reliably detects the "enquiry" form
+      and its fields at build time. The live, styled form lives on /contact.
+      (Netlify scans every .html file in the publish directory.)
+    -->
+    <form name="enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="enquiry" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="company" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <select name="subject">
+        <option value="Cost Management">Cost Management</option>
+        <option value="Construction Management">Construction Management</option>
+        <option value="Both">Both</option>
+        <option value="Careers">Careers at DCW</option>
+        <option value="General enquiry">General enquiry</option>
+      </select>
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

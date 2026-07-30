@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import MarketIcon from '../components/MarketIcon.astro';
 
 const stats = [
   { num: '2012', label: 'Founded in the PNW' },
@@ -163,11 +164,10 @@ const clients = [
           here's a sampling of where we collaborate.
         </p>
       </div>
-      <!-- Tiles use brand-gradient placeholders. To use real project photos,
-           add style="--img:url('/markets/ports.jpg')" to any .market-tile. -->
       <div class="grid grid-4 market-grid">
         {markets.map((m, i) => (
           <a href="/projects" class="market-tile" style={`--i:${i}`}>
+            <MarketIcon name={m} class="tile-ico" />
             <span class="market-label">{m}</span>
           </a>
         ))}
@@ -328,6 +328,20 @@ const clients = [
     background-position: center;
   }
   .market-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); color: #fff; }
+  /* MarketIcon renders in its own component scope, so target it globally */
+  :global(.tile-ico) {
+    position: absolute;
+    left: 1.4rem;
+    top: 1.3rem;
+    width: 46px;
+    height: 46px;
+    color: #fff;
+    opacity: 0.95;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform-origin: left top;
+  }
+  .market-tile:hover :global(.tile-ico) { opacity: 1; transform: scale(1.1); }
   .market-label {
     position: absolute;
     left: 1rem;
