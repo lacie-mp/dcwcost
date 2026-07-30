@@ -1,0 +1,140 @@
+---
+const year = 2026;
+const offices = [
+  {
+    name: 'Seattle (HQ)',
+    lines: ['415 1st Ave N, #9671', 'Seattle, WA 98109'],
+  },
+  {
+    name: 'Seattle — Pioneer Square',
+    lines: ['255 S King St, Ste 800', 'Seattle, WA 98104'],
+  },
+  {
+    name: 'Portland',
+    lines: ['220 NW 8th Ave', 'Portland, OR 97209'],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="fb-mark">DCW <span>Cost Management</span></div>
+      <p>
+        Independent, owner-centered cost &amp; construction management.
+        Women-owned (WBE/WOSB), serving the Pacific Northwest since 2014.
+      </p>
+      <div class="footer-contact">
+        <a href="tel:+12062592990">(206) 259-2990</a>
+        <a href="mailto:info@dcwcost.com">info@dcwcost.com</a>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-offices">
+      <h4>Offices</h4>
+      <div class="offices">
+        {offices.map((o) => (
+          <div class="office">
+            <strong>{o.name}</strong>
+            {o.lines.map((line) => <span>{line}</span>)}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="container footer-bar-inner">
+      <span>&copy; {year} DCW Cost Management. All rights reserved.</span>
+      <span class="cert">WBE &middot; WOSB Certified</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--navy);
+    color: #c7d2dd;
+    font-size: 0.95rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+  @media (max-width: 780px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  .fb-mark {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+  .fb-mark span { color: #c7d2dd; font-size: 1rem; }
+  .footer-brand p { color: #a9b8c6; max-width: 40ch; }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+  .footer-contact a { color: #e6b98a; }
+  .footer-contact a:hover { color: #fff; }
+
+  .site-footer h4 {
+    color: #fff;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .footer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer-nav a { color: #c7d2dd; }
+  .footer-nav a:hover { color: #fff; }
+
+  .offices {
+    display: grid;
+    gap: 1rem;
+  }
+  .office { display: flex; flex-direction: column; }
+  .office strong { color: #fff; font-weight: 600; margin-bottom: 0.15rem; }
+  .office span { color: #a9b8c6; line-height: 1.5; }
+
+  .footer-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--navy-800);
+  }
+  .footer-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1rem;
+    font-size: 0.85rem;
+    color: #9fb0bf;
+  }
+  .footer-bar .cert { letter-spacing: 0.06em; }
+  @media (max-width: 520px) {
+    .footer-bar-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
+</style>

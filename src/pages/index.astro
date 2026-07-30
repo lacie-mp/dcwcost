@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const stats = [
+  { num: '2014', label: 'Founded' },
+  { num: '400+', label: 'Projects each year' },
+  { num: '2', label: 'Offices — Seattle & Portland' },
+  { num: 'WBE/WOSB', label: 'Certified women-owned' },
+];
+
+const pillars = [
+  {
+    tag: 'Pillar One',
+    title: 'Cost Management',
+    body:
+      'Independent, third-party estimating and cost intelligence at every phase — from first business case through reconciliation. We give owners numbers they can trust and defend.',
+    points: [
+      'Third-party estimating',
+      'Design-based cost management',
+      'Business-case cost planning',
+      'Cost review, reporting & reconciliation',
+    ],
+  },
+  {
+    tag: 'Pillar Two',
+    title: 'Construction Management',
+    body:
+      'Owner-side leadership that keeps schedule, budget, and quality aligned with your goals — from program planning through construction and closeout.',
+    points: [
+      'Program, project & construction management',
+      "Owner's representation",
+      'Change-order review',
+      'Constructability coordination',
+    ],
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Understand the owner',
+    body: 'We start with your goals, constraints, and risk tolerance — not a template. Every engagement is scoped around what success means to you.',
+  },
+  {
+    step: '02',
+    title: 'Establish the baseline',
+    body: 'Independent estimates and a clear business case give you a defensible baseline before commitments are made.',
+  },
+  {
+    step: '03',
+    title: 'Steward through delivery',
+    body: 'We track cost and scope against that baseline, review change, and keep decisions transparent from design through construction.',
+  },
+  {
+    step: '04',
+    title: 'Reconcile & report',
+    body: 'Clear reporting and reconciliation at every milestone means no surprises — and a record you can stand behind.',
+  },
+];
+
+const featured = [
+  { name: 'Colman Dock', sector: 'Transportation / Marine' },
+  { name: 'University Link Light Rail Station', sector: 'Transit' },
+  { name: 'Mount Vernon Library Commons', sector: 'Civic / Library' },
+  { name: 'Charles D. Cameron Public Services Building', sector: 'Government' },
+];
+---
+
+<Layout title="DCW Cost Management" description="Independent, owner-centered cost and construction management firm serving Seattle and Portland since 2014. Women-owned, WBE/WOSB certified, 400+ projects a year.">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="eyebrow" style="color:#e6b98a">Owner-centered. Independent. Trusted.</span>
+      <h1>Cost &amp; construction management, built entirely around the&nbsp;owner.</h1>
+      <p class="lead" style="color:#d3dde6">
+        DCW is an independent cost and construction management firm serving the
+        Pacific Northwest since 2014. Women-owned and WBE/WOSB certified, we give
+        owners the clarity and confidence to deliver complex projects — more than
+        400 of them every year.
+      </p>
+      <div class="hero-cta">
+        <a href="/services" class="btn btn-primary">Our services</a>
+        <a href="/projects" class="btn btn-ghost on-dark">See our work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section-navy stats-band">
+    <div class="container grid grid-4">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="num">{s.num}</span>
+          <span class="label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container section-head">
+      <span class="eyebrow">Who we are</span>
+      <h2>An owner's advocate at every stage of the project.</h2>
+      <p class="lead">
+        We sit on the owner's side of the table. That independence — free from
+        the interests of designers or contractors — is what lets us protect
+        budgets, challenge assumptions, and keep projects honest from concept to
+        closeout.
+      </p>
+    </div>
+  </section>
+
+  <!-- Two pillars -->
+  <section class="section section-sand">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What we do</span>
+        <h2>Two service pillars, one owner-first mission.</h2>
+      </div>
+      <div class="grid grid-2">
+        {pillars.map((p) => (
+          <div class="card card-accent">
+            <span class="tag">{p.tag}</span>
+            <h3 style="margin-top:0.75rem">{p.title}</h3>
+            <p>{p.body}</p>
+            <ul class="check-list">
+              {p.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="center mt-2">
+        <a href="/services" class="btn btn-primary">Explore all services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Our process</span>
+        <h2>An owner-centered way of working.</h2>
+        <p class="lead">
+          The same disciplined approach runs through every engagement — so owners
+          always know where their project stands.
+        </p>
+      </div>
+      <div class="grid grid-4">
+        {process.map((p) => (
+          <div class="process-step">
+            <span class="step-num">{p.step}</span>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="section section-navy">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="color:#e6b98a">Featured work</span>
+        <h2>Landmark projects across the region.</h2>
+      </div>
+      <div class="grid grid-4">
+        {featured.map((f) => (
+          <div class="feature-card">
+            <span class="feature-sector">{f.sector}</span>
+            <h3>{f.name}</h3>
+          </div>
+        ))}
+      </div>
+      <div class="center mt-2">
+        <a href="/projects" class="btn btn-ghost on-dark">View all projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-band">
+    <div class="container center">
+      <h2>Let's talk about your next project.</h2>
+      <p class="lead mx-auto" style="text-align:center">
+        Whether you're shaping a business case or delivering in the field, we'd
+        love to help you get it right.
+      </p>
+      <div class="mt-2">
+        <a href="/contact" class="btn btn-primary">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(22,40,60,0.92), rgba(22,40,60,0.98)),
+      radial-gradient(1200px 500px at 80% -10%, #2f5578 0%, transparent 60%);
+    color: #fff;
+    padding-block: clamp(3.5rem, 9vw, 7rem);
+  }
+  .hero-inner { max-width: 46rem; }
+  .hero h1 { color: #fff; margin-bottom: 1rem; }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+
+  .stats-band { padding-block: clamp(2rem, 4vw, 3rem); }
+
+  .check-list {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .check-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    color: var(--slate);
+  }
+  .check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: var(--copper);
+    border-radius: 2px;
+  }
+
+  .process-step { }
+  .step-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--copper);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .process-step h3 { font-size: 1.15rem; }
+
+  .feature-card {
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.04);
+    transition: background 0.15s ease;
+  }
+  .feature-card:hover { background: rgba(255,255,255,0.08); }
+  .feature-sector {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #e6b98a;
+    font-weight: 700;
+  }
+  .feature-card h3 { color: #fff; margin: 0.4rem 0 0; font-size: 1.1rem; }
+
+  .cta-band { background: var(--sand); }
+</style>

@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const leadership = [
+  {
+    name: 'Trish Drew',
+    role: 'Founder',
+    creds: 'CPE, LEED AP',
+    bio: 'Founded DCW in 2014 to bring owners truly independent cost expertise. A Certified Professional Estimator and LEED Accredited Professional, Trish set the owner-first philosophy that still defines the firm.',
+  },
+  {
+    name: 'Brian Thompson',
+    role: 'Chief Executive Officer',
+    creds: '',
+    bio: "Leads DCW's strategy and growth across the Pacific Northwest, scaling the firm's practice while keeping the owner at the center of every engagement.",
+  },
+  {
+    name: 'Rachel Quimby',
+    role: 'Associate Director of Systems & Innovation',
+    creds: '',
+    bio: 'Drives the systems, tools, and process innovation that keep DCW’s cost and construction management work consistent, transparent, and repeatable across 400+ projects a year.',
+  },
+  {
+    name: 'Preeti Pustake',
+    role: 'Senior Cost Manager',
+    creds: '',
+    bio: 'Delivers rigorous estimating and cost management on complex projects, giving owners the detailed, defensible cost picture they rely on to make decisions.',
+  },
+];
+
+const values = [
+  {
+    title: 'Independent',
+    body: 'We answer only to the owner — never to the designer or contractor. That independence is the foundation of everything we do.',
+  },
+  {
+    title: 'Owner-centered',
+    body: 'Every engagement is scoped around the owner’s goals, constraints, and definition of success — not a one-size-fits-all playbook.',
+  },
+  {
+    title: 'Transparent',
+    body: 'Clear reporting and honest numbers at every milestone mean owners are never surprised by their own project.',
+  },
+];
+---
+
+<Layout title="About" description="DCW Cost Management is a women-owned (WBE/WOSB) cost and construction management firm founded in 2014 by Trish Drew, CPE, LEED AP.">
+  <PageHeader
+    eyebrow="About DCW"
+    title="Independent by design, owner-centered by conviction."
+    lead="Founded in 2014, DCW is a women-owned cost and construction management firm built to give owners an advocate they can trust."
+  />
+
+  <!-- Story -->
+  <section class="section">
+    <div class="container narrow">
+      <span class="eyebrow">Our story</span>
+      <h2>Built to put owners first.</h2>
+      <p>
+        DCW Cost Management was founded in 2014 by <strong>Trish Drew</strong> —
+        a Certified Professional Estimator (CPE) and LEED Accredited Professional
+        (LEED AP) — on a simple conviction: owners deserve cost and construction
+        expertise that works entirely for them.
+      </p>
+      <p>
+        More than a decade later, that conviction still guides the firm. From
+        offices in Seattle and Portland, our team supports owners on more than
+        400 projects every year, spanning transit, civic, government, and
+        marine work across the Pacific Northwest.
+      </p>
+      <p>
+        DCW is proud to be a <strong>women-owned business</strong>, certified as
+        both a Women’s Business Enterprise (WBE) and a Woman-Owned Small
+        Business (WOSB).
+      </p>
+
+      <div class="badges">
+        <span class="badge">Women-Owned</span>
+        <span class="badge">WBE Certified</span>
+        <span class="badge">WOSB Certified</span>
+        <span class="badge">Founded 2014</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section section-sand">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What guides us</span>
+        <h2>Principles that hold across every project.</h2>
+      </div>
+      <div class="grid grid-3">
+        {values.map((v) => (
+          <div class="card card-accent">
+            <h3>{v.title}</h3>
+            <p>{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Leadership</span>
+        <h2>The team behind the work.</h2>
+      </div>
+      <div class="grid grid-2">
+        {leadership.map((p) => (
+          <div class="leader card">
+            <div class="leader-avatar" aria-hidden="true">
+              {p.name.split(' ').map((n) => n[0]).join('')}
+            </div>
+            <div class="leader-body">
+              <h3>{p.name}</h3>
+              <p class="leader-role">
+                {p.role}{p.creds ? <span class="creds"> &middot; {p.creds}</span> : null}
+              </p>
+              <p>{p.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .narrow { max-width: 70ch; }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+  }
+  .badge {
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+  }
+
+  .leader {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .leader-avatar {
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #e6b98a;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+  .leader h3 { margin: 0 0 0.15rem; }
+  .leader-role {
+    color: var(--copper-dark);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .leader-role .creds { color: var(--slate-light); font-weight: 500; }
+  @media (max-width: 480px) {
+    .leader { flex-direction: column; }
+  }
+</style>

@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const offices = [
+  {
+    name: 'Seattle — Headquarters',
+    lines: ['415 1st Ave N, #9671', 'Seattle, WA 98109'],
+  },
+  {
+    name: 'Seattle — Pioneer Square',
+    lines: ['255 S King St, Ste 800', 'Seattle, WA 98104'],
+  },
+  {
+    name: 'Portland',
+    lines: ['220 NW 8th Ave', 'Portland, OR 97209'],
+  },
+];
+---
+
+<Layout title="Contact" description="Contact DCW Cost Management — offices in Seattle and Portland. Call (206) 259-2990 or email info@dcwcost.com.">
+  <PageHeader
+    eyebrow="Contact"
+    title="Let's start a conversation."
+    lead="Reach the DCW team by phone, email, or the form below — we'd be glad to hear about your project."
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- Contact details -->
+      <div class="contact-info">
+        <div class="quick-contact">
+          <div>
+            <span class="ci-label">Phone</span>
+            <a href="tel:+12062592990" class="ci-value">(206) 259-2990</a>
+          </div>
+          <div>
+            <span class="ci-label">Email</span>
+            <a href="mailto:info@dcwcost.com" class="ci-value">info@dcwcost.com</a>
+          </div>
+        </div>
+
+        <h3 class="offices-title">Our offices</h3>
+        <div class="office-list">
+          {offices.map((o) => (
+            <div class="office-card">
+              <strong>{o.name}</strong>
+              <address>
+                {o.lines.map((line) => <span>{line}</span>)}
+              </address>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Enquiry form -->
+      <div class="contact-form-wrap">
+        <div class="card">
+          <h3>Send us an enquiry</h3>
+          <p class="form-note">
+            Tell us a little about your project and we'll get back to you.
+          </p>
+
+          <form
+            name="enquiry"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thank-you"
+            class="enquiry-form"
+          >
+            <input type="hidden" name="form-name" value="enquiry" />
+            <p class="hidden-field">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="company">Company / Organization</label>
+                <input id="company" name="company" type="text" autocomplete="organization" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="subject">Project type</label>
+              <select id="subject" name="subject">
+                <option value="Cost Management">Cost Management</option>
+                <option value="Construction Management">Construction Management</option>
+                <option value="Both">Both</option>
+                <option value="General enquiry">General enquiry</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="message">How can we help?</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send enquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(1.75rem, 5vw, 3.5rem);
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .quick-contact {
+    display: grid;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .ci-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--slate-light);
+    margin-bottom: 0.15rem;
+  }
+  .ci-value {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .ci-value:hover { color: var(--copper-dark); }
+
+  .offices-title { margin-bottom: 1rem; }
+  .office-list { display: grid; gap: 1.1rem; }
+  .office-card strong { display: block; color: var(--navy); margin-bottom: 0.2rem; }
+  .office-card address {
+    font-style: normal;
+    color: var(--slate);
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+  }
+
+  .form-note { color: var(--slate); margin-bottom: 1.25rem; }
+  .enquiry-form { display: grid; gap: 1rem; }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 520px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+  .field { display: flex; flex-direction: column; }
+  .field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    font: inherit;
+    font-size: 0.98rem;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--ink);
+    width: 100%;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--copper);
+    box-shadow: 0 0 0 3px rgba(185, 116, 58, 0.15);
+  }
+  .field textarea { resize: vertical; }
+  .enquiry-form button { justify-self: start; margin-top: 0.25rem; }
+
+  .hidden-field { display: none; }
+</style>

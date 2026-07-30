@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const projects = [
+  {
+    name: 'Colman Dock',
+    sector: 'Transportation / Marine',
+    client: 'Washington State Ferries (WSDOT)',
+    role: 'Independent cost management and estimating for the replacement of one of the busiest ferry terminals on the West Coast, supporting phased construction while the terminal stayed in full operation.',
+  },
+  {
+    name: 'University Link Light Rail Station',
+    sector: 'Transit / Infrastructure',
+    client: 'Sound Transit',
+    role: 'Cost estimating and cost management support for a major underground light-rail station, helping the owner control budget on a complex, deep-bore transit project.',
+  },
+  {
+    name: 'Mount Vernon Library Commons',
+    sector: 'Civic / Library',
+    client: 'City of Mount Vernon',
+    role: 'Cost management in partnership with HKP Architects for a mixed-use civic library and commons, aligning budget with design intent from concept through construction.',
+  },
+  {
+    name: 'City of Bellingham Ops Admin Center & Vehicle Barn',
+    sector: 'Municipal / Public Works',
+    client: 'City of Bellingham',
+    role: "Cost and construction management for a combined operations administration center and vehicle maintenance barn, providing owner's-side oversight through delivery.",
+  },
+  {
+    name: 'Charles D. Cameron Public Services Building',
+    sector: 'Government / Civic',
+    client: 'Washington County, Oregon',
+    role: "Cost management and owner's representation for a consolidated public services building, keeping cost and scope aligned with the county's program goals.",
+  },
+  {
+    name: 'Hemisfair',
+    sector: 'Urban Redevelopment / Civic',
+    client: 'Hemisfair Park Area Redevelopment Corporation',
+    role: 'Independent cost planning and management supporting the phased redevelopment of a signature urban park and mixed-use district.',
+  },
+];
+---
+
+<Layout title="Projects" description="Landmark cost and construction management projects by DCW — transit, civic, marine, and government work across the Pacific Northwest and beyond.">
+  <PageHeader
+    eyebrow="Projects"
+    title="Landmark work across sectors."
+    lead="A selection of the transit, civic, marine, and government projects where DCW has helped owners deliver with confidence."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="project-list">
+        {projects.map((p, i) => (
+          <article class="project">
+            <div class="project-index" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <div class="project-main">
+              <span class="tag">{p.sector}</span>
+              <h2>{p.name}</h2>
+              <dl class="project-meta">
+                <div>
+                  <dt>Client</dt>
+                  <dd>{p.client}</dd>
+                </div>
+                <div>
+                  <dt>DCW's role</dt>
+                  <dd>{p.role}</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-navy">
+    <div class="container center">
+      <h2>Have a project like these?</h2>
+      <p class="lead mx-auto" style="text-align:center;color:#c7d2dd">
+        We'd welcome the chance to talk through how DCW can support your next
+        civic, transit, or public project.
+      </p>
+      <div class="mt-2">
+        <a href="/contact" class="btn btn-primary">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .project-list {
+    display: grid;
+    gap: 0;
+  }
+  .project {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: clamp(1rem, 3vw, 2rem);
+    padding-block: clamp(1.75rem, 4vw, 2.5rem);
+    border-top: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .project-index {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--copper);
+    opacity: 0.85;
+  }
+  .project-main h2 { margin: 0.5rem 0 0.75rem; }
+  .project-meta {
+    margin: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .project-meta dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--slate-light);
+    margin-bottom: 0.15rem;
+  }
+  .project-meta dd { margin: 0; color: var(--slate); }
+  @media (max-width: 560px) {
+    .project { grid-template-columns: 1fr; }
+    .project-index { font-size: 1.6rem; }
+  }
+</style>

@@ -1,0 +1,149 @@
+---
+const { pathname } = Astro.url;
+const isActive = (href) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="DCW Cost Management — home">
+      <span class="brand-mark">DCW</span>
+      <span class="brand-text">Cost Management</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class={isActive(l.href) ? 'active' : ''}
+               aria-current={isActive(l.href) ? 'page' : undefined}>
+              {l.label}
+            </a>
+          </li>
+        ))}
+        <li class="nav-cta">
+          <a href="/contact" class="btn btn-primary">Get in touch</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--navy);
+    font-family: var(--font-serif);
+  }
+  .brand:hover { color: var(--navy); }
+  .brand-mark {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--copper);
+  }
+  .brand-text {
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+  }
+  .site-nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.2vw, 2rem);
+    margin: 0;
+    padding: 0;
+  }
+  .site-nav a {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--navy);
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .site-nav a:hover { color: var(--copper-dark); }
+  .site-nav a.active {
+    color: var(--copper-dark);
+    border-bottom-color: var(--copper);
+  }
+  .nav-cta a { border-bottom: none; }
+  .nav-cta a:hover { color: #fff; }
+
+  /* Mobile toggle */
+  .nav-toggle, .nav-burger { display: none; }
+
+  @media (max-width: 820px) {
+    .nav-burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+    }
+    .nav-burger span {
+      height: 2px;
+      width: 24px;
+      background: var(--navy);
+      transition: 0.2s ease;
+    }
+    .site-nav {
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    .site-nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 0.5rem 0;
+    }
+    .site-nav li {
+      padding: 0.35rem var(--gap);
+    }
+    .nav-toggle:checked ~ .site-nav {
+      max-height: 420px;
+    }
+    .nav-cta { padding-top: 0.5rem !important; }
+    .nav-cta a { display: inline-block; }
+  }
+</style>

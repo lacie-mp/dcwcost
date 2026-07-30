@@ -1,0 +1,20 @@
+---
+const { eyebrow, title, lead } = Astro.props;
+---
+
+<section class="page-header">
+  <div class="container">
+    {eyebrow && <span class="eyebrow" style="color:#e6b98a">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {lead && <p class="lead" style="color:#c7d2dd">{lead}</p>}
+  </div>
+</section>
+
+<style>
+  .page-header {
+    background: var(--navy);
+    color: #fff;
+    padding-block: clamp(3rem, 7vw, 5rem);
+  }
+  .page-header h1 { color: #fff; margin-bottom: 0.5rem; }
+</style>
