@@ -11,6 +11,7 @@ export const sectors = [
     slug: 'government',
     name: 'Government',
     icon: 'Government',
+    image: '/katie-moum-o0kbc907i20-unsplash.jpg',
     tagline: 'Public dollars, defensible numbers.',
     lead: 'Independent cost and construction management for civic buildings, public works, and agency facilities — keeping public spending accountable, transparent, and defensible at audit.',
     body: [
@@ -29,6 +30,7 @@ export const sectors = [
     slug: 'healthcare',
     name: 'Healthcare',
     icon: 'Healthcare',
+    image: '/ledc-JtHwupBN3to-unsplash.jpg',
     tagline: 'Budget certainty in the most complex buildings.',
     lead: 'Cost intelligence for complex, highly regulated medical environments — where phased delivery, occupied-facility work, and budget certainty matter most.',
     body: [
@@ -47,6 +49,7 @@ export const sectors = [
     slug: 'higher-education',
     name: 'Higher Education',
     icon: 'Higher Education',
+    image: '/michael-marsh-U0dBV_QeiYk-unsplash.jpg',
     tagline: 'Cost clarity for the campus.',
     lead: 'Estimating and owner-side management for campus buildings and infrastructure — aligning cost with institutional priorities and long-range capital plans.',
     body: [
@@ -65,6 +68,7 @@ export const sectors = [
     slug: 'k-12',
     name: 'K-12',
     icon: 'K-12',
+    image: '/kyo-azuma-x_TJKVU1FJA-unsplash.jpg',
     tagline: 'Delivering on bond and levy commitments.',
     lead: 'Cost planning and stewardship for schools and district facilities — helping owners deliver on the bond and levy promises they made to voters.',
     body: [
@@ -83,6 +87,7 @@ export const sectors = [
     slug: 'parks',
     name: 'Parks',
     icon: 'Parks',
+    image: '/henrique-paim-sew5dUh0_bg-unsplash.jpg',
     tagline: 'From concept plan to community space.',
     lead: 'Cost management for parks, recreation, and public open-space projects — from concept planning through construction.',
     body: [
@@ -100,6 +105,7 @@ export const sectors = [
     slug: 'ports',
     name: 'Ports',
     icon: 'Ports',
+    image: '/ronan-furuta-daSq9zhROxY-unsplash.jpg',
     tagline: 'Delivery in demanding operational settings.',
     lead: 'Estimating and construction management for marine and port facilities — supporting delivery in complex, in-water, and fully operational environments.',
     body: [
@@ -117,6 +123,7 @@ export const sectors = [
     slug: 'transportation-utilities',
     name: 'Transportation & Utilities',
     icon: 'Transportation & Utilities',
+    image: '/thomas-despeyroux-Dh5pUa2PwrY-unsplash.jpg',
     tagline: 'Owner-focused cost for infrastructure.',
     lead: 'Owner-focused cost and construction management for transit, roadway, and utility infrastructure across the Pacific Northwest.',
     body: [
@@ -134,6 +141,7 @@ export const sectors = [
     slug: 'zoos-animal-welfare',
     name: 'Zoos & Animal Welfare',
     icon: 'Zoos & Animal Welfare',
+    image: '/kate-bezzubets-1sF9d3NFYr4-unsplash.jpg',
     tagline: 'Specialized cost for specialized environments.',
     lead: 'Cost management for zoo, aquarium, and animal-care facilities — balancing budget with the unique needs of these one-of-a-kind environments.',
     body: [

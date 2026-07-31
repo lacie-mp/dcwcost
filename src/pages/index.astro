@@ -163,7 +163,7 @@ const clients = [
       </div>
       <div class="grid grid-4 market-grid">
         {sectors.map((s, i) => (
-          <a href={`/sectors/${s.slug}`} class="market-tile" style={`--i:${i}`}>
+          <a href={`/sectors/${s.slug}`} class="market-tile" style={`--i:${i}${s.image ? `; --img: url('${s.image}')` : ''}`}>
             <MarketIcon name={s.icon} class="tile-ico" />
             <span class="market-label">{s.name}</span>
           </a>
